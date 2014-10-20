@@ -1,0 +1,12 @@
+{
+  "name": "tutorial-project-web",
+  "version": "0.0.0",
+  "authors": [
+    "eluleci <emrullahluleci@gmail.com>"
+  ],
+  "dependencies": {
+    "angular": "1.2.3"
+  },
+  "license": "MIT",
+  "homepage": "index.html"
+}

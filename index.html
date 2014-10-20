@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html ng-app="TranslationFeedApp">
+<head lang="en">
+  <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+  <title>Angular Tutorial Project</title>
+
+  <link rel="stylesheet" href="app/assets/buttons/css/buttons.css"/>
+  <link rel="stylesheet" href="app/app.css"/>
+  <link rel="stylesheet" href="app/features/translation-list/translation-list.css"/>
+</head>
+<body ng-controller="RootController">
+
+<div class="container">
+
+  <h1>Translation Feed</h1>
+
+  <p class="description">
+    Translation feed is a page where we learn a new sentence everyday. You can contribute to the translations with a
+    language you know.
+    <br/>Thanks in advance!
+  </p>
+
+  <create-translation ng-show="opensimsim"></create-translation>
+
+  <translation-list></translation-list>
+
+</div>
+
+<script src="//www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+<script src="app/assets/js/cheet.min.js"></script>
+<script src="app/assets/js/angular/angular.min.js"></script>
+<script src="app/app.js"></script>
+<script src="app/features/create-translation/create-translation.js"></script>
+<script src="app/features/translation-list/translation-list.js"></script>
+
+</body>
+</html>

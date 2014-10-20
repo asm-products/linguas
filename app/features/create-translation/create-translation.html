@@ -1,0 +1,7 @@
+<div class="create-translation-form">
+
+  <select class="button button-flat-primary button-rounded" ng-model="selectedLanguage" ng-options="language.name for language in languages"></select>
+  <input class="button button-border-primary button-rounded sentence-input" ng-model="sentence" type="text" placeholder="Sentence"/>
+  <button class="button button-flat-primary button-rounded" ng-click="createTranslation()">create</button>
+
+</div>

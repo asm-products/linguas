@@ -1,0 +1,27 @@
+@titleColor: #008AA1;
+
+.movie-info-box {
+  height: 650px;
+  margin-bottom: 20px;
+
+  h2 {
+    color: @titleColor;
+  }
+
+  h5 {
+    color: lighten(@titleColor, 20);
+  }
+
+  .release-date {
+    text-align: right;
+    margin-top: 10px;
+    font-size: 10px;
+  }
+
+  img {
+
+    &.poster {
+      max-width: 100%;
+    }
+  }
+}
