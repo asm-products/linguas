@@ -8,16 +8,21 @@ tutorialProject.directive('translationList', function () {
     templateUrl: 'app/features/translation-list/translation-list.html',
     controller: function ($scope) {
 
+      $scope.user = Parse.User.current();
+
       $scope.translationBunches = [];
       $scope.languages = availableLanguages;
 
       $scope.addTranslation = function (bunch) {
 
+        if (!$scope.user) console.error("User doesn't exist.");
+
         if (bunch.newTranslation.selectedLanguage && bunch.newTranslation.sentence.length > 0) {
 
           var newTranslation = {
             language: bunch.newTranslation.selectedLanguage.code,
-            translation: bunch.newTranslation.sentence
+            translation: bunch.newTranslation.sentence,
+            owner: $scope.user.id
           };
 
           bunch.attributes.translations.push(newTranslation);

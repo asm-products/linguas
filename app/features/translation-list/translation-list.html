@@ -1,38 +1,43 @@
 <div class="translation-list">
-  <ul>
-    <li class="translation-bunch-list" ng-repeat="bunch in translationBunches track by $index">
-      <span class="created-at">{{bunch.createdAt | date : format : timezone}}</span>
-      <ul class="translation-bunch clearfix">
-        <li>
-          <div class="translation clearfix" ng-repeat="translation in bunch.attributes.translations track by $index">
-            <img ng-src="/app/assets/img/{{translation.language}}.png"/>
+    <ul>
+        <li class="translation-bunch-list" ng-repeat="bunch in translationBunches track by $index">
+            <span class="created-at">{{bunch.createdAt | date : format : timezone}}</span>
+            <ul class="translation-bunch clearfix">
+                <li>
+                    <div class="translation clearfix"
+                         ng-repeat="translation in bunch.attributes.translations track by $index">
+                        <img ng-src="/app/assets/img/{{translation.language}}.png"/>
 
-            <div class="sentence">{{translation.translation}}</div>
+                        <div class="sentence">{{translation.translation}}</div>
 
-            <img class="delete-btn" src="/app/assets/img/delete.png" ng-click="removeTranslation(bunch, translation)"/>
-          </div>
-          <div>
-            <div ng-show="bunch.addingTranslation">
-              <select class="button button-flat-action button-rounded" ng-model="bunch.newTranslation.selectedLanguage"
-                      ng-options="language.name for language in languages"></select>
-              <input class="button button-border-action button-rounded sentence-input"
-                     ng-model="bunch.newTranslation.sentence" type="text"/>
-              <button class="button button-flat-action button-rounded"
-                      ng-click="addTranslation(bunch); bunch.addingTranslation = false">
-                add
-              </button>
-              <button class="button button-flat button-rounded" ng-click="bunch.addingTranslation = false">
-                cancel
-              </button>
-            </div>
-            <button class="add-translate-btn button button-border-action button-rounded"
-                    ng-click="bunch.addingTranslation = true"
-                    ng-hide="bunch.addingTranslation">
-              add translation
-            </button>
-          </div>
+                        <img ng-if="user && user.id == translation.owner" class="delete-btn"
+                             src="/app/assets/img/delete.png"
+                             ng-click="removeTranslation(bunch, translation)"/>
+                    </div>
+                    <div>
+                        <div ng-show="bunch.addingTranslation">
+                            <select class="button button-flat-action button-rounded"
+                                    ng-model="bunch.newTranslation.selectedLanguage"
+                                    ng-options="language.name for language in languages"></select>
+                            <input class="button button-border-action button-rounded sentence-input"
+                                   ng-model="bunch.newTranslation.sentence" type="text"/>
+                            <button class="button button-flat-action button-rounded"
+                                    ng-click="addTranslation(bunch); bunch.addingTranslation = false">
+                                add
+                            </button>
+                            <button class="button button-flat button-rounded"
+                                    ng-click="bunch.addingTranslation = false">
+                                cancel
+                            </button>
+                        </div>
+                        <button ng-if="user" class="add-translate-btn button button-border-action button-rounded"
+                                ng-click="bunch.addingTranslation = true"
+                                ng-hide="bunch.addingTranslation">
+                            add translation
+                        </button>
+                    </div>
+                </li>
+            </ul>
         </li>
-      </ul>
-    </li>
-  </ul>
+    </ul>
 </div>
