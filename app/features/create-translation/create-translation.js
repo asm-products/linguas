@@ -5,13 +5,13 @@ tutorialProject.directive('createTranslation', function ($window) {
     templateUrl: 'app/features/create-translation/create-translation.html',
     controller: function ($scope) {
 
+      $scope.user = Parse.User.current();
+
       $scope.languages = availableLanguages;
       $scope.selectedLanguage = $scope.languages[0];
       $scope.sentence = "";
 
       $scope.createTranslation = function () {
-        console.log($scope.selectedLanguage)
-        console.log($scope.sentence)
 
         if ($scope.selectedLanguage && $scope.sentence.length > 0) {
 
@@ -21,7 +21,8 @@ tutorialProject.directive('createTranslation', function ($window) {
           var translations = [
             {
               language: $scope.selectedLanguage.code,
-              translation: $scope.sentence
+              translation: $scope.sentence,
+              owner: $scope.user.id
             }
           ];
 
