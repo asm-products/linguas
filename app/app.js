@@ -60,3 +60,113 @@ tutorialProject.controller('RootController', ['$scope', '$window',
       });
     }]
 );
+
+tutorialProject.factory('TranslationService', function ($q) {
+
+  return {
+
+    getTranslationBunches: function () {
+      var mDefer = $q.defer();
+
+      var TranslationBunch = Parse.Object.extend("TranslationBunch");
+      var query = new Parse.Query(TranslationBunch);
+      query.descending("createdAt");
+      query.find({
+        success: function (results) {
+          mDefer.resolve(results);
+        },
+        error: function (error) {
+          mDefer.reject(error);
+        }
+      });
+
+      return mDefer.promise;
+    },
+
+    addTranslationToBunch: function (bunch, language, sentence) {
+      var mDefer = $q.defer();
+
+      var user = Parse.User.current();
+
+      if (!user) {
+        mDefer.reject("User is not logged in.");
+
+      } else if (language && sentence.length > 0) {
+
+        var translation = {
+          language: language,
+          sentence: sentence,
+          owner: user.id
+        }
+
+        bunch.attributes.translations.push(translation);
+        bunch.save(null, {
+          success: function (bunch) {
+            mDefer.resolve(bunch);
+          }, error: function (translationBunch, error) {
+            mDefer.reject(error);
+          }
+        });
+
+      } else {
+        mDefer.reject("Invalid attributes. Language or sentence is missing.");
+      }
+
+      return mDefer.promise;
+    },
+
+    deleteTranslation: function (bunch, translation) {
+      var mDefer = $q.defer();
+
+      if (!Parse.User.current()) {
+        console.error("User is not logged in.");
+        return;
+      }
+
+      var translationCount = bunch.attributes.translations.length
+
+      // iterating through all translations, finding the index and splicing the list
+      for (var i = 0; i < translationCount; i++) {
+        if (bunch.attributes.translations[i] == translation) {
+          bunch.attributes.translations.splice(i, 1);
+          break;
+        }
+      }
+
+      // if the length is still same, no translation is removed
+      if (translationCount == bunch.attributes.translations.length)
+        mDefer.reject();
+      else
+        bunch.save(null, {
+          success: function (bunch) {
+            mDefer.resolve(bunch);
+          }, error: function (bunch, error) {
+            mDefer.reject(error);
+          }
+        });
+
+      return mDefer.promise;
+    },
+
+    deleteBunch: function (bunch) {
+      var mDefer = $q.defer();
+
+      if (!Parse.User.current()) {
+        console.error("User is not logged in.");
+        return;
+      }
+
+      bunch.destroy({
+        success: function (bunch) {
+          mDefer.resolve(bunch);
+        },
+        error: function (myObject, error) {
+          mDefer.reject(error);
+        }
+      });
+
+      return mDefer.promise;
+    }
+
+  }
+})

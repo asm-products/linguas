@@ -21,7 +21,7 @@ tutorialProject.directive('createTranslation', function ($window) {
           var translations = [
             {
               language: $scope.selectedLanguage.code,
-              translation: $scope.sentence,
+              sentence: $scope.sentence,
               owner: $scope.user.id
             }
           ];
