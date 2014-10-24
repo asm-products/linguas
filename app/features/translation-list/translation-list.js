@@ -69,9 +69,9 @@ tutorialProject.directive('translationList', ['TranslationService' , function ()
       $scope.listenTranslation = function (translation) {
         console.log(translation)
 
-        window.open("http://translate.google.com/translate_tts?ie=UTF-8&q=" + translation.translation
+        window.open("http://translate.google.com/translate_tts?ie=UTF-8&q=" + translation.sentence
             + "&tl=" + translation.language,
-          translation.translation, "width=400, height=150");
+          translation.sentence, "width=400, height=150");
 
       }
 
