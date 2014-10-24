@@ -7,10 +7,12 @@
                     <div class="translation clearfix"
                          ng-repeat="translation in bunch.attributes.translations track by $index">
                         <img ng-src="/app/assets/img/{{translation.language}}.png"/>
+                        <img class="listen-btn has-transition" src="/app/assets/img/audio.svg"
+                             ng-click="listenTranslation(translation)"/>
 
                         <div class="sentence">{{translation.translation}}</div>
 
-                        <img ng-if="user && user.id == translation.owner" class="delete-btn"
+                        <img ng-if="user && user.id == translation.owner" class="delete-btn has-transition"
                              src="/app/assets/img/delete.png"
                              ng-click="removeTranslation(bunch, translation)"/>
                     </div>

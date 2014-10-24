@@ -74,6 +74,15 @@ tutorialProject.directive('translationList', function () {
 
       }
 
+      $scope.listenTranslation = function (translation) {
+        console.log(translation)
+
+        window.open("http://translate.google.com/translate_tts?ie=UTF-8&q=" + translation.translation
+            + "&tl=" + translation.language,
+          translation.translation, "width=400, height=150");
+
+      }
+
       $scope.getTranslations = function () {
         var TranslationBunch = Parse.Object.extend("TranslationBunch");
         var query = new Parse.Query(TranslationBunch);

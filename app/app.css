@@ -13,6 +13,14 @@
     display: inline-block;
 }
 
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 html[xmlns] .clearfix {
     display: block;
 }
@@ -41,6 +49,13 @@ a {
 
 a:visited {
 
+}
+
+.has-transition {
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
 }
 
 .container {
