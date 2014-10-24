@@ -65,6 +65,43 @@ tutorialProject.factory('TranslationService', function ($q) {
 
   return {
 
+    createTranslationBunch: function (language, sentence) {
+      var mDefer = $q.defer();
+
+      var user = Parse.User.current();
+      if (!user) {
+        console.error("User is not logged in.");
+        return;
+      }
+
+      if (language && sentence.length > 0) {
+
+        var TranslationBunch = Parse.Object.extend("TranslationBunch");
+        var translationBunch = new TranslationBunch();
+
+        var translations = [
+          {
+            language: language.code,
+            sentence: sentence,
+            owner: user.id
+          }
+        ];
+        translationBunch.set("translations", translations);
+
+        translationBunch.save(null, {
+          success: function (translationBunch) {
+            mDefer.resolve(translationBunch);
+          },
+          error: function (translationBunch, error) {
+            mDefer.reject(error);
+          }
+        });
+
+      }
+
+      return mDefer.promise;
+    },
+
     getTranslationBunches: function () {
       var mDefer = $q.defer();
 
