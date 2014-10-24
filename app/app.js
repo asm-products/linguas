@@ -48,7 +48,6 @@ tutorialProject.controller('RootController', ['$scope', '$window',
     function ($scope, $window) {
 
       $scope.user = Parse.User.current();
-      console.log($scope.user)
 
       $scope.logout = function () {
         Parse.User.logOut();
