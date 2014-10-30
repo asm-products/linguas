@@ -1,9 +1,9 @@
-tutorialProject.directive('createTranslation', ['$window', 'TranslationService' ,
+linguas.directive('createTranslation', ['$window', 'TranslationService' ,
   function ($window, TranslationService) {
     return {
       restrict: 'AE',
       replace: true,
-      templateUrl: 'app/features/create-translation/create-translation.html',
+      templateUrl: 'app/features/translation/create-translation/create-translation.html',
       controller: function ($scope) {
 
         $scope.user = Parse.User.current();

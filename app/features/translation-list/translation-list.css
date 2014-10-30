@@ -50,23 +50,35 @@
     height: 32px;
     position: absolute;
     top: -1px;
-    left: -1px;
+    left: -35px;
     border-radius: 50%;
     padding: 6px;
-    background-color: #EEEEEE;
     opacity: 0;
     cursor: pointer;
 }
 
 .translation-bunch .translation:hover .listen-btn {
-    opacity: .8;
+    opacity: 1;
+}
+
+.translation-bunch .translation .listen-btn:hover {
+    background-color: #e2e2e2;
 }
 
 .translation-bunch .translation .sentence {
     max-width: 90%;
     float: left;
-    margin: 5px 0 0 10px;
     cursor: default;
+    min-height: 30px;
+    padding-left: 10px;
+}
+
+.translation-bunch .translation .sentence .word.has-translation {
+    cursor: pointer;
+}
+
+.translation-bunch .translation .sentence .word.has-translation:hover {
+    color: #1abc9c;
 }
 
 .translation-bunch .translation .delete-btn {
@@ -80,7 +92,18 @@
     opacity: 0;
 }
 
-.translation-bunch .translation:hover .delete-btn {
+.translation-bunch .translation .add-word-translation-btn {
+    top: 0;
+    right: 25px;
+    position: absolute;
+    margin-top: 6px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.translation-bunch .translation:hover .delete-btn, .translation-bunch .translation:hover .add-word-translation-btn {
     opacity: 1;
 }
 

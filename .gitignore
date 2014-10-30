@@ -38,3 +38,4 @@ dist/
 node_modules/
 to-do.md
 *.DS_Store
+*.log

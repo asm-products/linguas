@@ -36,23 +36,43 @@ var availableLanguages = [
   {name: 'French (France)', code: 'fr-fr'}
 ];
 
-var tutorialProject = angular.module('TranslationFeedApp', [])
+var linguas = angular.module('TranslationFeedApp', ['ngStorage', 'ngDialog', 'ui.bootstrap', 'ui.bootstrap.tooltip', 'ui.bootstrap.dropdown'])
 
-tutorialProject.config(['$httpProvider', function ($httpProvider) {
+linguas.config(['$httpProvider', function ($httpProvider) {
 //  $httpProvider.defaults.useXDomain = true;
 //  delete $httpProvider.defaults.headers.common['X-Requested-With'];
 }
 ]);
 
-tutorialProject.controller('RootController', ['$scope', '$window',
-    function ($scope, $window) {
+linguas.controller('RootController', ['$scope', '$window', '$localStorage',
+    function ($scope, $window, $localStorage) {
 
       $scope.user = Parse.User.current();
+      $scope.primaryLanguage;
 
       $scope.logout = function () {
         Parse.User.logOut();
         $window.location.reload();
       };
+
+      // getting primary language if selected before
+      var isLanguageSet = false;
+      if ($localStorage.primaryLanguage) {
+        var languages = availableLanguages.filter(function (language) {
+          return language.code == $localStorage.primaryLanguage.code;
+        });
+        $scope.primaryLanguage = languages[0]
+      } else {
+        $scope.primaryLanguage = availableLanguages[0]
+      }
+
+      $scope.setPrimaryLanguage = function (language) {
+        $scope.primaryLanguage = language;
+        $localStorage.primaryLanguage = $scope.primaryLanguage;
+        setTimeout(function () {
+          $window.location.reload();
+        }, 300);
+      }
 
       cheet('o p e n s i m s i m', function () {
         $scope.opensimsim = true;
@@ -61,7 +81,7 @@ tutorialProject.controller('RootController', ['$scope', '$window',
     }]
 );
 
-tutorialProject.factory('TranslationService', function ($q) {
+linguas.factory('TranslationService', function ($q) {
 
   return {
 
@@ -148,6 +168,39 @@ tutorialProject.factory('TranslationService', function ($q) {
       } else {
         mDefer.reject("Invalid attributes. Language or sentence is missing.");
       }
+
+      return mDefer.promise;
+    },
+
+    deleteTranslation: function (bunch, translation) {
+      var mDefer = $q.defer();
+
+      if (!Parse.User.current()) {
+        console.error("User is not logged in.");
+        return;
+      }
+
+      var translationCount = bunch.attributes.translations.length
+
+      // iterating through all translations, finding the index and splicing the list
+      for (var i = 0; i < translationCount; i++) {
+        if (bunch.attributes.translations[i] == translation) {
+          bunch.attributes.translations.splice(i, 1);
+          break;
+        }
+      }
+
+      // if the length is still same, no translation is removed
+      if (translationCount == bunch.attributes.translations.length)
+        mDefer.reject();
+      else
+        bunch.save(null, {
+          success: function (bunch) {
+            mDefer.resolve(bunch);
+          }, error: function (bunch, error) {
+            mDefer.reject(error);
+          }
+        });
 
       return mDefer.promise;
     },

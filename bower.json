@@ -5,7 +5,13 @@
     "eluleci <emrullahluleci@gmail.com>"
   ],
   "dependencies": {
-    "angular": "1.2.3"
+    "angular": "1.2.3",
+    "ngDialog": "*",
+    "jQuery": "*",
+    "bootstrap": "*",
+    "angular-bootstrap": "*",
+    "flat-ui": "*"
+
   },
   "license": "MIT",
   "homepage": "index.html"

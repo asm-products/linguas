@@ -1,4 +1,4 @@
-tutorialProject.directive('facebookLogin', function ($window) {
+linguas.directive('facebookLogin', function ($window) {
   return {
     restrict: 'AE',
     replace: true,

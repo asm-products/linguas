@@ -1,0 +1,19 @@
+.word-translation-form {
+    width: 300px;
+    font-size: 14px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.word-translation-form thead, .word-translation-form tfoot {
+    text-align: right;
+}
+
+.word-input {
+    background-color: #f8f8f8;
+    border: none;
+    outline: none;
+    padding: 5px;
+    width: 100%;
+    margin: 5px;
+}

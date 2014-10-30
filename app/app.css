@@ -77,10 +77,20 @@ h3 {
 
 .description {
     color: #aaaaaa;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    font-size: .8em;
 }
 
 .user-info {
+    height: 41px;
+    line-height: 41px;
     color: #666;
+    display: inline-block;
+}
+
+.primary-language-selection {
+    float: right;
+}
+
+.primary-language-selection select {
+    margin-top: -6px;
 }
