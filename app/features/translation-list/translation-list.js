@@ -16,12 +16,18 @@ linguas.directive('translationList', ['$localStorage', '$window', 'TranslationSe
 
       $scope.primaryLanguage = $localStorage.primaryLanguage || availableLanguages[0];
 
+      $scope.setNewTranslationLanguage = function (bunch, language) {
+        bunch.newTranslation.selectedLanguage = language;
+        bunch.newTranslation.sentence = "";
+      }
+
       $scope.addTranslation = function (bunch) {
 
         TranslationService
           .addTranslationToBunch(bunch, bunch.newTranslation.selectedLanguage.code, bunch.newTranslation.sentence)
           .then(
           function (bunch) {
+            bunch = $scope.generateTranslatedWords(bunch)
             console.log("Translation is successfully added to the bunch")
           },
           function (error) {
@@ -98,7 +104,7 @@ linguas.directive('translationList', ['$localStorage', '$window', 'TranslationSe
             $scope.languages.splice($scope.languages.indexOf($scope.fromLanguage), 1)   // removing 'from' language
             $scope.toLanguage = $scope.languages[0];
 
-            $scope.setToLanguage = function(language) {
+            $scope.setToLanguage = function (language) {
               $scope.toLanguage = language;
             }
 
@@ -133,6 +139,43 @@ linguas.directive('translationList', ['$localStorage', '$window', 'TranslationSe
         })
       }
 
+      $scope.generateTranslatedWords = function (bunch) {
+
+        // for each translation
+        bunch.attributes.translations.forEach(function (translation) {
+
+          // finding the translated words in user's primary language
+          var translatedWords;
+          if (translation.wordTranslations) {
+            var indexOfTranslations = -1;
+            for (var i = 0; i < translation.wordTranslations.length; i++) {
+              if (translation.wordTranslations[i].language == $scope.primaryLanguage.code) {
+                indexOfTranslations = i;
+              }
+            }
+
+            if (indexOfTranslations != -1)
+              translatedWords = translation.wordTranslations[indexOfTranslations].words
+          }
+
+          // creating words array
+          var sentenceWords = translation.sentence.split(' ');
+          translation.words = [];
+          for (var i = 0; i < sentenceWords.length; i++) {
+            var word = {
+              value: sentenceWords[i]
+            }
+
+            // adding word translation if exists
+            if (translatedWords) word.translation = translatedWords[i]
+
+            // adding word to words array
+            translation.words.push(word)
+          }
+        })
+        return bunch;
+      }
+
       $scope.getTranslations = function () {
 
         TranslationService.getTranslationBunches().then(
@@ -140,39 +183,7 @@ linguas.directive('translationList', ['$localStorage', '$window', 'TranslationSe
 
             // for each translation bunch
             results.forEach(function (bunch) {
-
-              // for each translation
-              bunch.attributes.translations.forEach(function (translation) {
-
-                // finding the translated words in user's primary language
-                var translatedWords;
-                if (translation.wordTranslations) {
-                  var indexOfTranslations = -1;
-                  for (var i = 0; i < translation.wordTranslations.length; i++) {
-                    if (translation.wordTranslations[i].language == $scope.primaryLanguage.code) {
-                      indexOfTranslations = i;
-                    }
-                  }
-
-                  if (indexOfTranslations != -1)
-                    translatedWords = translation.wordTranslations[indexOfTranslations].words
-                }
-
-                // creating words array
-                var sentenceWords = translation.sentence.split(' ');
-                translation.words = [];
-                for (var i = 0; i < sentenceWords.length; i++) {
-                  var word = {
-                    value: sentenceWords[i]
-                  }
-
-                  // adding word translation if exists
-                  if (translatedWords) word.translation = translatedWords[i]
-
-                  // adding word to words array
-                  translation.words.push(word)
-                }
-              })
+              bunch = $scope.generateTranslatedWords(bunch)
             })
 
             $scope.translationBunches = results;
