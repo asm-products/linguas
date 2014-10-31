@@ -8,9 +8,8 @@
     "angular": "1.2.3",
     "ngDialog": "*",
     "ngstorage": "0.3.0",
-    "jQuery": "*",
-    "bootstrap": "*",
     "angular-bootstrap": "*",
+    "jQuery": "*",
     "flat-ui": "*"
 
   },

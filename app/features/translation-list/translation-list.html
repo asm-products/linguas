@@ -26,7 +26,8 @@
 
                         <!-- delete btn -->
                         <span ng-if="user && user.id == translation.owner" tooltip="delete"
-                              class="fui-cross delete-btn has-transition"></span>
+                              class="fui-cross delete-btn has-transition"
+                                ng-click="removeTranslation(bunch, translation)"></span>
 
                         <!-- add word translation btn -->
                         <span ng-if="user" class="fui-tag add-word-translation-btn has-transition"

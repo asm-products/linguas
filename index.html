@@ -5,14 +5,18 @@
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <title>Translation Feed</title>
 
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <!-- build:css app/css/libs.css -->
+    <link rel="stylesheet" href="bower_components/flat-ui/dist/css/vendor/bootstrap.min.css"/>
     <link rel="stylesheet" href="bower_components/flat-ui/dist/css/flat-ui.min.css"/>
     <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog-theme-plain.min.css"/>
     <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.min.css"/>
+    <!-- endbuild -->
 
-    <link rel="stylesheet" href="app/app.css?v=11"/>
-    <link rel="stylesheet" href="app/features/translation-list/translation-list.css?v=11"/>
-    <link rel="stylesheet" href="app/features/translation/word-translations/create/create-word-translation.css?v=11"/>
+    <!-- build:less app/css/app.css -->
+    <link rel="stylesheet" href="app/app.css"/>
+    <link rel="stylesheet" href="app/features/translation-list/translation-list.css"/>
+    <link rel="stylesheet" href="app/features/translation/word-translations/create/create-word-translation.css"/>
+    <!-- endbuild -->
 </head>
 <body ng-controller="RootController">
 
@@ -51,18 +55,20 @@
 
 </div>
 
-<script src="//www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+<!-- build:js app/js/app.js -->
 <script src="bower_components/jQuery/dist/jquery.min.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/ngDialog/js/ngDialog.min.js"></script>
 <script src="bower_components/ngstorage/ngStorage.min.js"></script>
+<script src="app/assets/js/parse-1.3.0.min.js"></script>
 <script src="app/assets/js/cheet.min.js"></script>
 <script src="app/assets/js/ui-bootstrap-tpls.min.js"></script>
 
-<script src="app/app.js?v=11"></script>
-<script src="app/features/translation/create-translation/create-translation.js?v=11"></script>
-<script src="app/features/translation-list/translation-list.js?v=11"></script>
-<script src="app/features/facebook-login/facebook-login.js?v=11"></script>
+<script src="app/app.js"></script>
+<script src="app/features/translation/create-translation/create-translation.js"></script>
+<script src="app/features/translation-list/translation-list.js"></script>
+<script src="app/features/facebook-login/facebook-login.js"></script>
+<!-- endbuild -->
 
 </body>
 </html>
