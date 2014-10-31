@@ -7,12 +7,11 @@
 
     <link rel="stylesheet" href="app/assets/js/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="app/assets/css/flat-ui.min.css"/>
-    <link rel="stylesheet" href="app/assets/buttons/css/buttons.css"/>
     <link rel="stylesheet" href="app/assets/js/ng-dialog/ng-dialog-theme-plain.css"/>
     <link rel="stylesheet" href="app/assets/js/ng-dialog/ng-dialog.min.css"/>
-    <link rel="stylesheet" href="app/app.css?v=10"/>
-    <link rel="stylesheet" href="app/features/translation-list/translation-list.css?v=10"/>
-    <link rel="stylesheet" href="app/features/translation/word-translations/create/create-word-translation.css?v=10"/>
+    <link rel="stylesheet" href="app/app.css?v=11"/>
+    <link rel="stylesheet" href="app/features/translation-list/translation-list.css?v=11"/>
+    <link rel="stylesheet" href="app/features/translation/word-translations/create/create-word-translation.css?v=11"/>
 </head>
 <body ng-controller="RootController">
 
@@ -36,8 +35,8 @@
     </div>
 
     <!-- primary language selection -->
-    <div class="primary-language-selection btn-group" dropdown is-open="status.isopen" ng-cloak>
-        <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+    <div class="primary-language-selection btn-group" dropdown is-open="status.isopen">
+        <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled" ng-cloak>
             I speak {{primaryLanguage.name}} <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
@@ -64,10 +63,10 @@
 <script src="app/assets/js/ui-bootstrap-tpls.min.js"></script>
 <!--<script src="app/assets/js/bootstrap/js/tooltip.js"></script>-->
 
-<script src="app/app.js?v=10"></script>
-<script src="app/features/translation/create-translation/create-translation.js?v=10"></script>
-<script src="app/features/translation-list/translation-list.js?v=10"></script>
-<script src="app/features/facebook-login/facebook-login.js?v=10"></script>
+<script src="app/app.js?v=11"></script>
+<script src="app/features/translation/create-translation/create-translation.js?v=11"></script>
+<script src="app/features/translation-list/translation-list.js?v=11"></script>
+<script src="app/features/facebook-login/facebook-login.js?v=11"></script>
 
 </body>
 </html>
