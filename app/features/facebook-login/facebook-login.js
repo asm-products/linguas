@@ -2,7 +2,7 @@ linguas.directive('facebookLogin', function ($window) {
   return {
     restrict: 'AE',
     replace: true,
-    template: '<a href="#" ng-click="login()">Login with facebook to contribute</a>',
+    template: '<a href="#" ng-click="login()" style="line-height: 40px;">Login with facebook to contribute</a>',
     controller: function ($scope) {
 
       $scope.login = function () {

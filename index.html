@@ -6,13 +6,13 @@
     <title>Translation Feed</title>
 
     <link rel="stylesheet" href="app/assets/js/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="bower_components/flat-ui/dist/css/flat-ui.min.css"/>
+    <link rel="stylesheet" href="app/assets/css/flat-ui.min.css"/>
     <link rel="stylesheet" href="app/assets/buttons/css/buttons.css"/>
     <link rel="stylesheet" href="app/assets/js/ng-dialog/ng-dialog-theme-plain.css"/>
     <link rel="stylesheet" href="app/assets/js/ng-dialog/ng-dialog.min.css"/>
-    <link rel="stylesheet" href="app/app.css?v=8"/>
-    <link rel="stylesheet" href="app/features/translation-list/translation-list.css?v=8"/>
-    <link rel="stylesheet" href="app/features/translation/word-translations/create/create-word-translation.css?v=8"/>
+    <link rel="stylesheet" href="app/app.css?v=10"/>
+    <link rel="stylesheet" href="app/features/translation-list/translation-list.css?v=10"/>
+    <link rel="stylesheet" href="app/features/translation/word-translations/create/create-word-translation.css?v=10"/>
 </head>
 <body ng-controller="RootController">
 
@@ -26,22 +26,15 @@
         <br/>Thanks in advance!
     </p>
 
+    <!-- facebook login button-->
     <facebook-login ng-if="!user"></facebook-login>
-    <div class="user-info">
-        <span ng-if="user">
-        Logged in as {{user.attributes.firstName}} <a href="#" ng-click="logout()"> - logout</a>
-        </span>
-<!--
-        <span class="primary-language-selection">
-        I speak <select class="button button-flat-action button-rounded"
-                        ng-model="primaryLanguage"
-                        ng-options="language.name for language in languages"
-                        ng-value="language.code"></select>
-        </span>-->
 
+    <!-- user information -->
+    <div class="user-info" ng-if="user">
+        Logged in as {{user.attributes.firstName}} <a href="#" ng-click="logout()"> - logout</a>
     </div>
 
-    <!-- Single button -->
+    <!-- primary language selection -->
     <div class="primary-language-selection btn-group" dropdown is-open="status.isopen">
         <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
             I speak {{primaryLanguage.name}} <span class="caret"></span>
@@ -53,26 +46,27 @@
         </ul>
     </div>
 
-
+    <!-- creating new translation -->
     <create-translation ng-show="user && opensimsim"></create-translation>
 
+    <!-- showing translation list -->
     <translation-list></translation-list>
 
 </div>
 
 <script src="//www.parsecdn.com/js/parse-1.3.0.min.js"></script>
-<script src="bower_components/jQuery/dist/jquery.min.js"></script>
+<script src="app/assets/js/jquery.min.js"></script>
 <script src="app/assets/js/cheet.min.js"></script>
 <script src="app/assets/js/angular/angular.min.js"></script>
 <script src="app/assets/js/ng-dialog/ng-dialog.js"></script>
 <script src="app/assets/js/ng-storage.js"></script>
-<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="app/assets/js/ui-bootstrap-tpls.min.js"></script>
 <!--<script src="app/assets/js/bootstrap/js/tooltip.js"></script>-->
 
-<script src="app/app.js?v=8"></script>
-<script src="app/features/translation/create-translation/create-translation.js?v=8"></script>
-<script src="app/features/translation-list/translation-list.js?v=8"></script>
-<script src="app/features/facebook-login/facebook-login.js?v=8"></script>
+<script src="app/app.js?v=10"></script>
+<script src="app/features/translation/create-translation/create-translation.js?v=10"></script>
+<script src="app/features/translation-list/translation-list.js?v=10"></script>
+<script src="app/features/facebook-login/facebook-login.js?v=10"></script>
 
 </body>
 </html>

@@ -73,8 +73,16 @@
     padding-left: 10px;
 }
 
+.translation-bunch .translation .sentence .word:after {
+    /*margin-right: 6px;*/
+    /*content: " ";*/
+    /*background-color: red;*/
+    /*height: 100%;*/
+}
+
 .translation-bunch .translation .sentence .word.has-translation {
     cursor: pointer;
+    border-bottom: 1px solid #d2d2d2;
 }
 
 .translation-bunch .translation .sentence .word.has-translation:hover {

@@ -18,7 +18,6 @@ linguas.directive('translationList', ['$localStorage', '$window', 'TranslationSe
 
       $scope.setNewTranslationLanguage = function (bunch, language) {
         bunch.newTranslation.selectedLanguage = language;
-        bunch.newTranslation.sentence = "";
       }
 
       $scope.addTranslation = function (bunch) {
@@ -43,6 +42,7 @@ linguas.directive('translationList', ['$localStorage', '$window', 'TranslationSe
           TranslationService.deleteTranslation(bunch, translation)
             .then(
             function (bunch) {
+              $scope.generateTranslatedWords(bunch)
               console.log('Translation successfully deleted from bunch.')
             },
             function (error) {
@@ -120,20 +120,11 @@ linguas.directive('translationList', ['$localStorage', '$window', 'TranslationSe
               else
                 $scope.translation.wordTranslations = [wordTranslation]
 
-              // deleting the words array that we added temporarily (no need to keep them in data store)
-              bunch.attributes.translations.forEach(function (translation) {
-                delete translation.words;
-              });
-
-              $scope.bunch.save(null, {
-                success: function (bunch) {
-                  console.log('word translations added successfully')
-                  $scope.closeThisDialog();
-                  $window.location.reload();
-                }, error: function (bunch, error) {
-                  console.error('word translations adding failed')
-                }
-              });
+              TranslationService.saveTranslationBunch(bunch).then(function () {
+                console.log('Translation bunch is successfully saved.')
+              }, function () {
+                console.error('Tranlsation bunch save failed.')
+              })
             }
           }]
         })
@@ -183,7 +174,7 @@ linguas.directive('translationList', ['$localStorage', '$window', 'TranslationSe
 
             // for each translation bunch
             results.forEach(function (bunch) {
-              bunch = $scope.generateTranslatedWords(bunch)
+              $scope.generateTranslatedWords(bunch)
             })
 
             $scope.translationBunches = results;

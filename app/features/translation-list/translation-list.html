@@ -16,11 +16,12 @@
                              ng-click="listenTranslation(translation)"/>
 
                         <!-- sentence -->
-                        <!--<div class="sentence">{{translation.sentence}}</div>-->
                         <div class="sentence">
-                            <span class="word has-transition" ng-repeat="word in translation.words track by $index"
-                                  ng-class="{'has-translation': word.translation}"
-                                  tooltip="{{word.translation}}">{{word.value}} </span>
+                            <span ng-repeat="word in translation.words track by $index">
+                                <span class="word has-transition" ng-class="{'has-translation': word.translation}"
+                                      tooltip="{{word.translation}}">{{word.value}}</span>
+                                <span> </span>
+                            </span>
                         </div>
 
                         <!-- delete btn -->
@@ -48,10 +49,6 @@
                                     </li>
                                 </ul>
                             </div>
-                            <!--
-                                                        <select class="button button-flat-action button-rounded"
-                                                                ng-model="bunch.newTranslation.selectedLanguage"
-                                                                ng-options="language.name for language in languages"></select>-->
 
                             <input class="form-control"
                                    ng-model="bunch.newTranslation.sentence" type="text"/>
@@ -65,8 +62,10 @@
                             </button>
                         </div>
                         <button ng-if="user" type="button" class="btn btn-default add-translate-btn"
-                                ng-click="bunch.addingTranslation = true; bunch.newTranslation.selectedLanguage = languages[0]"
-                                ng-hide="bunch.addingTranslation">add translation
+                                ng-hide="bunch.addingTranslation"
+                                ng-click="bunch.addingTranslation = true;
+                                bunch.newTranslation.selectedLanguage = languages[0];
+                                bunch.newTranslation.sentence = '';">add translation
                         </button>
                     </div>
                 </li>

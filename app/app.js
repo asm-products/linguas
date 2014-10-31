@@ -85,6 +85,37 @@ linguas.factory('TranslationService', function ($q) {
 
   return {
 
+    trimTranslationBunch: function (translationBunch) {
+
+      // deleting the temporarily added values
+      translationBunch.attributes.translations.forEach(function (translation) {
+        delete translation.words;
+      });
+      return translationBunch
+    },
+
+    saveTranslationBunch: function (translationBunch) {
+      var mDefer = $q.defer();
+/*
+      // deleting the temporarily added values
+      translationBunch.attributes.translations.forEach(function (translation) {
+        delete translation.words;
+      });*/
+
+      translationBunch = this.trimTranslationBunch((translationBunch))
+
+      translationBunch.save(null, {
+        success: function (translationBunch) {
+          mDefer.resolve(translationBunch);
+        },
+        error: function (translationBunch, error) {
+          mDefer.reject(error);
+        }
+      });
+
+      return mDefer.promise;
+    },
+
     createTranslationBunch: function (language, sentence) {
       var mDefer = $q.defer();
 
@@ -157,13 +188,7 @@ linguas.factory('TranslationService', function ($q) {
         }
 
         bunch.attributes.translations.push(translation);
-        bunch.save(null, {
-          success: function (bunch) {
-            mDefer.resolve(bunch);
-          }, error: function (translationBunch, error) {
-            mDefer.reject(error);
-          }
-        });
+        return this.saveTranslationBunch(bunch)
 
       } else {
         mDefer.reject("Invalid attributes. Language or sentence is missing.");
@@ -194,46 +219,7 @@ linguas.factory('TranslationService', function ($q) {
       if (translationCount == bunch.attributes.translations.length)
         mDefer.reject();
       else
-        bunch.save(null, {
-          success: function (bunch) {
-            mDefer.resolve(bunch);
-          }, error: function (bunch, error) {
-            mDefer.reject(error);
-          }
-        });
-
-      return mDefer.promise;
-    },
-
-    deleteTranslation: function (bunch, translation) {
-      var mDefer = $q.defer();
-
-      if (!Parse.User.current()) {
-        console.error("User is not logged in.");
-        return;
-      }
-
-      var translationCount = bunch.attributes.translations.length
-
-      // iterating through all translations, finding the index and splicing the list
-      for (var i = 0; i < translationCount; i++) {
-        if (bunch.attributes.translations[i] == translation) {
-          bunch.attributes.translations.splice(i, 1);
-          break;
-        }
-      }
-
-      // if the length is still same, no translation is removed
-      if (translationCount == bunch.attributes.translations.length)
-        mDefer.reject();
-      else
-        bunch.save(null, {
-          success: function (bunch) {
-            mDefer.resolve(bunch);
-          }, error: function (bunch, error) {
-            mDefer.reject(error);
-          }
-        });
+        return this.saveTranslationBunch(bunch)
 
       return mDefer.promise;
     },
@@ -260,3 +246,4 @@ linguas.factory('TranslationService', function ($q) {
 
   }
 })
+
