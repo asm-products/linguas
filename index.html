@@ -18,13 +18,14 @@
 
 <div class="container">
 
-    <h3>Translation Feed</h3>
-
-    <p class="description">
-        Translation feed is a page where we learn a new sentence everyday. You can contribute to the translations with a
-        language you know.
-        <br/>Thanks in advance!
-    </p>
+    <h3 class="linguas-title">
+        <span class="primary-title" tooltip-html-unsafe="{{description}}" tooltip-placement="bottom">Linguas</span>,
+        Translation Feed
+    </h3>
+    <!--
+        <p class="description">
+            <span class="linguas-title">Linguas</span>,
+        </p>-->
 
     <!-- facebook login button-->
     <facebook-login ng-if="!user"></facebook-login>
@@ -35,7 +36,7 @@
     </div>
 
     <!-- primary language selection -->
-    <div class="primary-language-selection btn-group" dropdown is-open="status.isopen">
+    <div class="primary-language-selection btn-group" dropdown is-open="status.isopen" ng-cloak>
         <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
             I speak {{primaryLanguage.name}} <span class="caret"></span>
         </button>

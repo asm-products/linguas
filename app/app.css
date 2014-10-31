@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext,cyrillic-ext,greek-ext,cyrillic);
+@import url(http://fonts.googleapis.com/css?family=Lobster);
 
 .clearfix:after {
     content: ".";
@@ -51,6 +52,16 @@ a:visited {
 
 }
 
+.linguas-title {
+    font-family: 'Lobster', cursive;
+    color: #323232;
+    cursor: default;
+}
+
+.primary-title {
+    color: #ee4d46;
+}
+
 .has-transition {
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
@@ -76,8 +87,13 @@ h3 {
 }
 
 .description {
-    color: #aaaaaa;
+    font-family: "Open Sans";
     font-size: .8em;
+}
+
+.description .linguas-title {
+    font-size: 1.4em;
+    color: #ffffff;
 }
 
 .user-info {

@@ -93,10 +93,10 @@
     top: 0;
     right: 0;
     position: absolute;
-    margin-top: 6px;
     width: 20px;
     height: 20px;
     cursor: pointer;
+    color: #bdc3c7;
     opacity: 0;
 }
 
@@ -104,10 +104,10 @@
     top: 0;
     right: 25px;
     position: absolute;
-    margin-top: 6px;
     width: 20px;
     height: 20px;
     cursor: pointer;
+    color: #1abc9c;
     opacity: 0;
 }
 

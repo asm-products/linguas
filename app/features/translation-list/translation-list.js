@@ -86,6 +86,9 @@ linguas.directive('translationList', ['$localStorage', '$window', 'TranslationSe
         var wordTranslationScope = $scope.$new(true);
         wordTranslationScope.bunch = bunch
         wordTranslationScope.translation = translation
+        wordTranslationScope.successListener = function (b) {
+          bunch = $scope.generateTranslatedWords(b)
+        }
 
         ngDialog.open({
           template: 'app/features/translation/word-translations/create/create-word-translation.html',
@@ -98,14 +101,15 @@ linguas.directive('translationList', ['$localStorage', '$window', 'TranslationSe
             });
             $scope.fromLanguage = fromLanguage[0];
 
-            $scope.words = $scope.translation.sentence.replace(/[!?.,]/g, '').split(" ");
-            $scope.wTranslations = new Array($scope.words.length);
-            $scope.languages = availableLanguages.slice(0);                             // copying array
+            $scope.words = $scope.translation.sentence.replace(/[!?.,]/g, '').split(" ")
+            $scope.wTranslations = new Array($scope.words.length)
+            $scope.languages = availableLanguages.slice(0)                              // copying array
             $scope.languages.splice($scope.languages.indexOf($scope.fromLanguage), 1)   // removing 'from' language
-            $scope.toLanguage = $scope.languages[0];
+            $scope.toLanguage = $scope.languages[0]
+            $scope.isInProgress = false
 
             $scope.setToLanguage = function (language) {
-              $scope.toLanguage = language;
+              $scope.toLanguage = language
             }
 
             $scope.addWordTranslations = function () {
@@ -120,9 +124,13 @@ linguas.directive('translationList', ['$localStorage', '$window', 'TranslationSe
               else
                 $scope.translation.wordTranslations = [wordTranslation]
 
+              $scope.isInProgress = true
               TranslationService.saveTranslationBunch(bunch).then(function () {
+                $scope.successListener($scope.bunch)
                 console.log('Translation bunch is successfully saved.')
+                $scope.closeThisDialog()
               }, function () {
+                $scope.isInProgress = false
                 console.error('Tranlsation bunch save failed.')
               })
             }

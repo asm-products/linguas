@@ -25,14 +25,19 @@
                         </div>
 
                         <!-- delete btn -->
-                        <img ng-if="user && user.id == translation.owner" class="delete-btn has-transition"
+                        <span ng-if="user && user.id == translation.owner" tooltip="delete"
+                              class="fui-cross delete-btn has-transition"></span>
+                        <!--<img ng-if="user && user.id == translation.owner" class="delete-btn has-transition"
                              src="/app/assets/img/delete.png"
-                             ng-click="removeTranslation(bunch, translation)"/>
+                             ng-click="removeTranslation(bunch, translation)"/>-->
 
                         <!-- add word translation btn -->
-                        <img ng-if="user" class="add-word-translation-btn has-transition"
+                        <span ng-if="user" class="fui-tag add-word-translation-btn has-transition" tooltip="translate words"
+                              ng-click="addWordTranslation(bunch, translation)"></span>
+
+                        <!--<img ng-if="user" class="add-word-translation-btn has-transition"
                              src="/app/assets/img/word.png"
-                             ng-click="addWordTranslation(bunch, translation)"/>
+                             ng-click="addWordTranslation(bunch, translation)"/>-->
 
 
                     </div>

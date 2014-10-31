@@ -29,11 +29,11 @@ window.fbAsyncInit = function () {
 var availableLanguages = [
   {name: 'English', code: 'en-us'},
   {name: 'Turkish', code: 'tr-tr'},
-  {name: 'German (Germany)', code: 'de-de'},
-  {name: 'Arabic (S.Arabia)', code: 'ar-sa'},
+  {name: 'German', code: 'de-de'},
+  {name: 'Arabic', code: 'ar-sa'},
   {name: 'Russian', code: 'ru-ru'},
-  {name: 'Spanish (Spain)', code: 'es-es'},
-  {name: 'French (France)', code: 'fr-fr'}
+  {name: 'Spanish', code: 'es-es'},
+  {name: 'French', code: 'fr-fr'}
 ];
 
 var linguas = angular.module('TranslationFeedApp', ['ngStorage', 'ngDialog', 'ui.bootstrap', 'ui.bootstrap.tooltip', 'ui.bootstrap.dropdown'])
@@ -44,8 +44,10 @@ linguas.config(['$httpProvider', function ($httpProvider) {
 }
 ]);
 
-linguas.controller('RootController', ['$scope', '$window', '$localStorage',
-    function ($scope, $window, $localStorage) {
+linguas.controller('RootController', ['$scope', '$window', '$localStorage', 'DictionaryService',
+    function ($scope, $window, $localStorage, DictionaryService) {
+
+      $scope.description = "<span class='description'><span class='linguas-title'>Linguas</span>, " + DictionaryService.en.description + "</span>";
 
       $scope.user = Parse.User.current();
       $scope.primaryLanguage;
@@ -96,11 +98,11 @@ linguas.factory('TranslationService', function ($q) {
 
     saveTranslationBunch: function (translationBunch) {
       var mDefer = $q.defer();
-/*
-      // deleting the temporarily added values
-      translationBunch.attributes.translations.forEach(function (translation) {
-        delete translation.words;
-      });*/
+      /*
+       // deleting the temporarily added values
+       translationBunch.attributes.translations.forEach(function (translation) {
+       delete translation.words;
+       });*/
 
       translationBunch = this.trimTranslationBunch((translationBunch))
 
@@ -242,6 +244,21 @@ linguas.factory('TranslationService', function ($q) {
       });
 
       return mDefer.promise;
+    }
+
+  }
+})
+
+
+linguas.factory('DictionaryService', function ($q) {
+
+  return {
+
+    en: {
+      description: "Translation Feed is a page where we share a new sentence everyday."
+        + "The translations in other languages are added by the other users voluntarily. You can use it without signing in "
+        + "but we'd like you to join us and help others to learn and practice languages."
+        + "<br/>Thanks in advance!"
     }
 
   }
