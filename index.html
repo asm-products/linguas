@@ -5,10 +5,11 @@
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <title>Translation Feed</title>
 
-    <link rel="stylesheet" href="app/assets/js/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="app/assets/css/flat-ui.min.css"/>
-    <link rel="stylesheet" href="app/assets/js/ng-dialog/ng-dialog-theme-plain.css"/>
-    <link rel="stylesheet" href="app/assets/js/ng-dialog/ng-dialog.min.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="bower_components/flat-ui/dist/css/flat-ui.min.css"/>
+    <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog-theme-plain.min.css"/>
+    <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.min.css"/>
+
     <link rel="stylesheet" href="app/app.css?v=11"/>
     <link rel="stylesheet" href="app/features/translation-list/translation-list.css?v=11"/>
     <link rel="stylesheet" href="app/features/translation/word-translations/create/create-word-translation.css?v=11"/>
@@ -21,10 +22,6 @@
         <span class="primary-title" tooltip-html-unsafe="{{description}}" tooltip-placement="bottom">Linguas</span>,
         Translation Feed
     </h3>
-    <!--
-        <p class="description">
-            <span class="linguas-title">Linguas</span>,
-        </p>-->
 
     <!-- facebook login button-->
     <facebook-login ng-if="!user"></facebook-login>
@@ -55,13 +52,12 @@
 </div>
 
 <script src="//www.parsecdn.com/js/parse-1.3.0.min.js"></script>
-<script src="app/assets/js/jquery.min.js"></script>
+<script src="bower_components/jQuery/dist/jquery.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/ngDialog/js/ngDialog.min.js"></script>
+<script src="bower_components/ngstorage/ngStorage.min.js"></script>
 <script src="app/assets/js/cheet.min.js"></script>
-<script src="app/assets/js/angular/angular.min.js"></script>
-<script src="app/assets/js/ng-dialog/ng-dialog.js"></script>
-<script src="app/assets/js/ng-storage.js"></script>
 <script src="app/assets/js/ui-bootstrap-tpls.min.js"></script>
-<!--<script src="app/assets/js/bootstrap/js/tooltip.js"></script>-->
 
 <script src="app/app.js?v=11"></script>
 <script src="app/features/translation/create-translation/create-translation.js?v=11"></script>
