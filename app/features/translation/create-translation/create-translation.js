@@ -14,8 +14,22 @@ linguas.directive('createTranslation', ['$window', 'TranslationService' ,
 
         $scope.createTranslation = function () {
 
-          TranslationService.createTranslationBunch($scope.selectedLanguage, $scope.sentence).then(
+          TranslationService.createTranslation($scope.selectedLanguage.code, $scope.sentence).then(
+            function (translation) {
+              console.log("translation created. creating bunch now")
+              $scope.createTranslationBunch(translation)
+            },
+            function (error) {
+              console.error(error)
+            }
+          )
+        }
+
+        $scope.createTranslationBunch = function (translation) {
+          console.log("translation bunch created")
+          TranslationService.createTranslationBunch(translation).then(
             function (translationBunch) {
+
               $window.location.reload();
             },
             function (error) {

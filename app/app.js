@@ -118,7 +118,7 @@ linguas.factory('TranslationService', function ($q) {
       return mDefer.promise;
     },
 
-    createTranslationBunch: function (language, sentence) {
+    createTranslation: function (languageCode, sentence) {
       var mDefer = $q.defer();
 
       var user = Parse.User.current();
@@ -127,18 +127,43 @@ linguas.factory('TranslationService', function ($q) {
         return;
       }
 
-      if (language && sentence.length > 0) {
+      if (languageCode && sentence.length > 0) {
+
+        var Translation = Parse.Object.extend("Translation");
+        var translation = new Translation();
+        translation.set("language", languageCode)
+        translation.set("sentence", sentence)
+        translation.set("owner", user)
+
+        translation.save(null, {
+          success: function (translation) {
+            mDefer.resolve(translation);
+          },
+          error: function (translation, error) {
+            mDefer.reject(error);
+          }
+        });
+
+      }
+
+      return mDefer.promise;
+    },
+
+    createTranslationBunch: function (initialTranslation) {
+      var mDefer = $q.defer();
+
+      var user = Parse.User.current();
+      if (!user) {
+        console.error("User is not logged in.");
+        return;
+      }
+
+      if (initialTranslation) {
 
         var TranslationBunch = Parse.Object.extend("TranslationBunch");
         var translationBunch = new TranslationBunch();
 
-        var translations = [
-          {
-            language: language.code,
-            sentence: sentence,
-            owner: user.id
-          }
-        ];
+        var translations = [initialTranslation];
         translationBunch.set("translations", translations);
 
         translationBunch.save(null, {
@@ -160,6 +185,7 @@ linguas.factory('TranslationService', function ($q) {
 
       var TranslationBunch = Parse.Object.extend("TranslationBunch");
       var query = new Parse.Query(TranslationBunch);
+      query.include("translations");
       query.descending("createdAt");
       query.find({
         success: function (results) {
