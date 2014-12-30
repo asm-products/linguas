@@ -37,6 +37,10 @@ linguas.directive('createBunch', ['$window', 'TranslationService' ,
             }
           )
         }
+
+        $scope.setLanguage = function (language) {
+          $scope.selectedLanguage = language;
+        }
       }
     };
   }]);

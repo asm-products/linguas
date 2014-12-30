@@ -10,7 +10,7 @@ linguas.directive('translationListRow', ['$window', 'TranslationService',
       templateUrl: 'app/features/translation-list/translation-row/translation-row.html',
       controller: function ($scope) {
 
-        if ($scope.translation.attributes && $scope.translation.attributes.owner) {
+        if ($scope.translation.attributes && $scope.translation.attributes.owner && Parse.User.current()) {
           $scope.isOwner = Parse.User.current().id == $scope.translation.attributes.owner.id
         }
 

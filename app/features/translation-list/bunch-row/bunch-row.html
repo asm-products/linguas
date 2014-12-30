@@ -1,6 +1,6 @@
-<li class="translation-bunch-list">
-    <span class="created-at">{{bunch.createdAt | date : format : timezone}}</span>
-    <ul class="translation-bunch clearfix">
+<li class="translation-bunch-list row">
+    <span class="created-at col-sm-12">{{bunch.createdAt | date : format : timezone}}</span>
+    <ul class="translation-bunch clearfix col-sm-12">
         <li>
             <translation-list-row
                     ng-repeat="translation in bunch.attributes.translations track by $index"

@@ -1,7 +1,20 @@
-<div class="create-translation-form">
+<div class="create-translation-form row">
 
-  <select class="button button-flat-primary button-rounded" ng-model="selectedLanguage" ng-options="language.name for language in languages"></select>
-  <input class="button button-border-primary button-rounded sentence-input" ng-model="sentence" type="text" placeholder="Sentence"/>
-  <button class="button button-flat-primary button-rounded" ng-click="createTranslation()">create</button>
+    <div class="btn-group col-sm-3" dropdown>
+        <button type="button" class="btn btn-primary dropdown-toggle" style="width: 100%">
+            {{selectedLanguage.name}} <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li ng-repeat="language in languages">
+                <a href="#" ng-click="setLanguage(language)">{{language.name}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="condensed-col col-sm-7">
+        <input class="form-control" ng-model="sentence" type="text" placeholder="Sentence"/>
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-primary pull-right" ng-click="createTranslation()">create</button>
+    </div>
 
 </div>

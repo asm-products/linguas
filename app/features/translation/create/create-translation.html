@@ -1,7 +1,7 @@
 <div>
-    <div ng-show="addingTranslation" class="form-inline">
-        <div class="btn-group " dropdown>
-            <button type="button" class="btn btn-primary dropdown-toggle">
+    <div ng-show="addingTranslation" class="row">
+        <div class="btn-group col-sm-3" dropdown>
+            <button type="button" class="btn btn-primary dropdown-toggle" style="width: 100%">
                 {{selectedLanguage.name}} <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
@@ -11,9 +11,17 @@
             </ul>
         </div>
 
-        <input class="form-control" ng-model="sentence" type="text"/>
-        <button class="btn btn-primary" ng-click="addTranslation(); addingTranslation = false">add</button>
-        <button class="btn btn-default" ng-click="addingTranslation = false">cancel</button>
+        <div class="condensed-col col-sm-6">
+            <input class="form-control" ng-model="sentence" type="text" placeholder="Sentence"/>
+        </div>
+        <div class="col-sm-3" style="text-align: right">
+            <button class="btn btn-primary" ng-click="addTranslation(); addingTranslation = false">
+                <span class="fui-check"></span>
+            </button>
+            <button class="btn btn-default" ng-click="addingTranslation = false">
+                <span class="fui-cross"></span>
+            </button>
+        </div>
     </div>
     <button ng-if="user" type="button" class="btn btn-default add-translate-btn" ng-hide="addingTranslation"
             ng-click="showAddTranslationForm()">
