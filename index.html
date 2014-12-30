@@ -48,7 +48,8 @@
     </div>
 
     <!-- creating new translation -->
-    <create-translation ng-show="user && opensimsim"></create-translation>
+    <!--<create-translation ng-show="user && opensimsim"></create-translation>-->
+    <create-bunch ng-show="user"></create-bunch>
 
     <!-- showing translation list -->
     <translation-list></translation-list>
@@ -65,7 +66,10 @@
 <script src="app/assets/js/ui-bootstrap-tpls.min.js"></script>
 
 <script src="app/app.js"></script>
-<script src="app/features/translation/create-translation/create-translation.js"></script>
+<script src="app/features/translation/create/create-translation.js"></script>
+<script src="app/features/translation-bunch/create/create-bunch.js"></script>
+<script src="app/features/translation-list/bunch-row/bunch-row.js"></script>
+<script src="app/features/translation-list/translation-row/translation-row.js"></script>
 <script src="app/features/translation-list/translation-list.js"></script>
 <script src="app/features/facebook-login/facebook-login.js"></script>
 <!-- endbuild -->

@@ -1,9 +1,9 @@
-linguas.directive('createTranslation', ['$window', 'TranslationService' ,
+linguas.directive('createBunch', ['$window', 'TranslationService' ,
   function ($window, TranslationService) {
     return {
       restrict: 'AE',
       replace: true,
-      templateUrl: 'app/features/translation/create-translation/create-translation.html',
+      templateUrl: 'app/features/translation-bunch/create/create-bunch.html',
       controller: function ($scope) {
 
         $scope.user = Parse.User.current();

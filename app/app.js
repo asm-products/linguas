@@ -87,24 +87,8 @@ linguas.factory('TranslationService', function ($q) {
 
   return {
 
-    trimTranslationBunch: function (translationBunch) {
-
-      // deleting the temporarily added values
-      translationBunch.attributes.translations.forEach(function (translation) {
-        delete translation.words;
-      });
-      return translationBunch
-    },
-
     saveTranslationBunch: function (translationBunch) {
       var mDefer = $q.defer();
-      /*
-       // deleting the temporarily added values
-       translationBunch.attributes.translations.forEach(function (translation) {
-       delete translation.words;
-       });*/
-
-      translationBunch = this.trimTranslationBunch((translationBunch))
 
       translationBunch.save(null, {
         success: function (translationBunch) {
@@ -227,21 +211,44 @@ linguas.factory('TranslationService', function ($q) {
         return;
       }
 
-      var translationCount = bunch.attributes.translations.length
+      translation.destroy({
+        success: function (translation) {
 
-      // iterating through all translations, finding the index and splicing the list
-      for (var i = 0; i < translationCount; i++) {
-        if (bunch.attributes.translations[i] == translation) {
-          bunch.attributes.translations.splice(i, 1);
-          break;
+          // iterating through all translations, finding the index and splicing the list
+          for (var i = 0; i < bunch.attributes.translations.length; i++) {
+            if (bunch.attributes.translations[i] == translation) {
+              bunch.attributes.translations.splice(i, 1);
+              break;
+            }
+          }
+
+          if (bunch.attributes.translations.length > 0) {
+            // if there are more translations, just save the bunch
+            bunch.save(null, {
+              success: function (bunch) {
+                mDefer.resolve(bunch);
+              },
+              error: function (bunch, error) {
+                mDefer.reject(error);
+              }
+            });
+
+          } else {
+            // if there are no more translations left, delete the bunch too
+            bunch.destroy({
+              success: function (bunch) {
+                mDefer.resolve(bunch);
+              },
+              error: function (myObject, error) {
+                mDefer.reject(error);
+              }
+            });
+          }
+        },
+        error: function (myObject, error) {
+          mDefer.reject(error);
         }
-      }
-
-      // if the length is still same, no translation is removed
-      if (translationCount == bunch.attributes.translations.length)
-        mDefer.reject();
-      else
-        return this.saveTranslationBunch(bunch)
+      });
 
       return mDefer.promise;
     },
