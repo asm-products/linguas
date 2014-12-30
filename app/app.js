@@ -199,7 +199,7 @@ linguas.factory('TranslationService', function ($q) {
       return mDefer.promise;
     },
 
-    addTranslationToBunch: function (bunch, language, sentence) {
+    addTranslationToBunch: function (bunch, translation) {
       var mDefer = $q.defer();
 
       var user = Parse.User.current();
@@ -207,13 +207,7 @@ linguas.factory('TranslationService', function ($q) {
       if (!user) {
         mDefer.reject("User is not logged in.");
 
-      } else if (language && sentence.length > 0) {
-
-        var translation = {
-          language: language,
-          sentence: sentence,
-          owner: user.id
-        }
+      } else if (translation) {
 
         bunch.attributes.translations.push(translation);
         return this.saveTranslationBunch(bunch)

@@ -22,16 +22,24 @@ linguas.directive('translationList', ['$localStorage', '$window', 'TranslationSe
 
       $scope.addTranslation = function (bunch) {
 
-        TranslationService
-          .addTranslationToBunch(bunch, bunch.newTranslation.selectedLanguage.code, bunch.newTranslation.sentence)
-          .then(
-          function (bunch) {
-            bunch = $scope.generateTranslatedWords(bunch)
-            console.log("Translation is successfully added to the bunch")
+        // first create the translation object
+        TranslationService.createTranslation(bunch.newTranslation.selectedLanguage.code, bunch.newTranslation.sentence).then(
+          function (translation) {
+
+            // then add the created object to existing translation bunch
+            TranslationService.addTranslationToBunch(bunch, translation).then(
+              function (bunch) {
+                bunch = $scope.generateTranslatedWords(bunch)
+                console.log("Translation is successfully added to the bunch")
+              },
+              function (error) {
+                console.log(error)
+              })
           },
           function (error) {
-            console.log(error)
-          })
+            console.error(error)
+          }
+        )
       }
 
       $scope.removeTranslation = function (bunch, translation) {
@@ -157,7 +165,6 @@ linguas.directive('translationList', ['$localStorage', '$window', 'TranslationSe
               translatedWords = translation.wordTranslations[indexOfTranslations].words
           }
 
-          console.log(translation)
           var sentenceWords
           // creating words array
           if (translation.attributes)
@@ -180,7 +187,7 @@ linguas.directive('translationList', ['$localStorage', '$window', 'TranslationSe
         return bunch;
       }
 
-      $scope.getTranslations = function () {
+      $scope.getTranslationBunches = function () {
 
         TranslationService.getTranslationBunches().then(
           function (results) {
@@ -197,7 +204,7 @@ linguas.directive('translationList', ['$localStorage', '$window', 'TranslationSe
           }
         )
       }
-      $scope.getTranslations();
+      $scope.getTranslationBunches();
 
     }
   };
