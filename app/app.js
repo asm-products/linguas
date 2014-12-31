@@ -36,11 +36,19 @@ var availableLanguages = [
   {name: 'French', code: 'fr-fr'}
 ];
 
-var linguas = angular.module('TranslationFeedApp', ['ngStorage', 'ngDialog', 'ui.bootstrap', 'ui.bootstrap.tooltip', 'ui.bootstrap.dropdown'])
+var linguas = angular.module('TranslationFeedApp', ['ngStorage', 'ngRoute', 'ngDialog', 'ui.bootstrap', 'ui.bootstrap.tooltip', 'ui.bootstrap.dropdown'])
 
-linguas.config(['$httpProvider', function ($httpProvider) {
+linguas.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
 //  $httpProvider.defaults.useXDomain = true;
 //  delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
+  $routeProvider.
+    when('/', {
+      templateUrl: 'app/features/main-stream/main-stream.html'
+    })
+    .otherwise({
+      redirectTo: '/'
+    });
 }
 ]);
 

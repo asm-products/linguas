@@ -8,13 +8,16 @@
     </span>
 
     <!-- sentence -->
-    <div class="sentence">
+    <div class="sentence">{{translation.attributes.sentence}}</div>
+
+    <!-- used when showing word translations -->
+    <!--<div class="sentence">
         <span ng-repeat="word in translation.words track by $index">
             <span class="word has-transition" ng-class="{'has-translation': word.translation}"
                   tooltip="{{word.translation}}">{{word.value}}</span>
             <span> </span>
         </span>
-    </div>
+    </div>-->
 
     <!-- delete btn -->
     <span ng-if="isOwner" tooltip="delete" class="fui-cross delete-btn has-transition"

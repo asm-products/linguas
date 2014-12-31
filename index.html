@@ -14,7 +14,7 @@
 
     <!-- build:less app/css/app.css -->
     <link rel="stylesheet" href="app/app.css"/>
-    <link rel="stylesheet" href="app/features/translation-list/translation-list.css"/>
+    <link rel="stylesheet" href="app/features/main-stream/main-stream.css"/>
     <link rel="stylesheet" href="app/features/translation/word-translations/create/create-word-translation.css"/>
     <!-- endbuild -->
 </head>
@@ -36,7 +36,7 @@
     </div>
 
     <!-- primary language selection -->
-    <div class="primary-language-selection btn-group" dropdown is-open="status.isopen">
+    <!--<div class="primary-language-selection btn-group" dropdown is-open="status.isopen">
         <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled" ng-cloak>
             I speak {{primaryLanguage.name}} <span class="caret"></span>
         </button>
@@ -45,19 +45,22 @@
                 <a href="#" ng-click="setPrimaryLanguage(language)">{{language.name}}</a>
             </li>
         </ul>
-    </div>
-
-    <!-- creating new translation -->
+    </div>-->
+<!--
+    &lt;!&ndash; creating new translation &ndash;&gt;
     <create-bunch ng-show="user && opensimsim"></create-bunch>
 
-    <!-- showing translation list -->
-    <translation-list></translation-list>
+    &lt;!&ndash; showing translation list &ndash;&gt;
+    <translation-list></translation-list>-->
+
+    <div ng-view></div>
 
 </div>
 
 <!-- build:js app/js/app.js -->
 <script src="bower_components/jQuery/dist/jquery.min.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src="bower_components/ngDialog/js/ngDialog.min.js"></script>
 <script src="bower_components/ngstorage/ngStorage.min.js"></script>
 <script src="app/assets/js/parse-1.3.0.min.js"></script>
@@ -65,11 +68,11 @@
 <script src="app/assets/js/ui-bootstrap-tpls.min.js"></script>
 
 <script src="app/app.js"></script>
+<script src="app/features/main-stream/main-stream.js"></script>
 <script src="app/features/translation/create/create-translation.js"></script>
 <script src="app/features/translation-bunch/create/create-bunch.js"></script>
-<script src="app/features/translation-list/bunch-row/bunch-row.js"></script>
-<script src="app/features/translation-list/translation-row/translation-row.js"></script>
-<script src="app/features/translation-list/translation-list.js"></script>
+<script src="app/features/translation-bunch/bunch-row/bunch-row.js"></script>
+<script src="app/features/translation/translation-row/translation-row.js"></script>
 <script src="app/features/facebook-login/facebook-login.js"></script>
 <!-- endbuild -->
 

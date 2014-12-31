@@ -6,10 +6,8 @@ linguas.directive('bunchRow', ['$window', 'TranslationService',
       scope: {
         bunch: '=bunch'
       },
-      templateUrl: 'app/features/translation-list/bunch-row/bunch-row.html',
+      templateUrl: 'app/features/translation-bunch/bunch-row/bunch-row.html',
       controller: function ($scope) {
-
-
 
       }
     };
