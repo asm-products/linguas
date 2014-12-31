@@ -3,6 +3,12 @@
     <!-- creating new translation -->
     <create-bunch ng-show="user && opensimsim"></create-bunch>
 
+    <!-- empty list message -->
+    <h5 ng-show="translationBunches && translationBunches.length == 0" class="text-center">
+        Oups! We couldn't find any sentence for this page.
+    </h5>
+
+
     <!-- translation list -->
     <div class="translation-list">
         <ul class="">

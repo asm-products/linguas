@@ -46,14 +46,17 @@ linguas.config(['$routeProvider', '$httpProvider', function ($routeProvider, $ht
     when('/', {
       templateUrl: 'app/features/main-stream/main-stream.html'
     })
+    .when('/:level', {
+      templateUrl: 'app/features/main-stream/main-stream.html'
+    })
     .otherwise({
       redirectTo: '/'
     });
 }
 ]);
 
-linguas.controller('RootController', ['$scope', '$window', '$localStorage', 'DictionaryService',
-    function ($scope, $window, $localStorage, DictionaryService) {
+linguas.controller('RootController', ['$scope', '$window', '$routeParams', '$localStorage', 'DictionaryService',
+    function ($scope, $window, $routeParams, $localStorage, DictionaryService) {
 
       $scope.description = "<span class='description'><span class='linguas-title'>Linguas</span>, " + DictionaryService.en.description + "</span>";
 
@@ -110,7 +113,7 @@ linguas.factory('TranslationService', function ($q) {
       return mDefer.promise;
     },
 
-    createTranslation: function (languageCode, sentence) {
+    createTranslation: function (languageCode, sentence, level) {
       var mDefer = $q.defer();
 
       var user = Parse.User.current();
@@ -141,7 +144,7 @@ linguas.factory('TranslationService', function ($q) {
       return mDefer.promise;
     },
 
-    createTranslationBunch: function (initialTranslation) {
+    createTranslationBunch: function (initialTranslation, level) {
       var mDefer = $q.defer();
 
       var user = Parse.User.current();
@@ -156,6 +159,7 @@ linguas.factory('TranslationService', function ($q) {
         var translationBunch = new TranslationBunch();
 
         var translations = [initialTranslation];
+        translationBunch.set("level", level);
         translationBunch.set("translations", translations);
 
         translationBunch.save(null, {
@@ -172,11 +176,14 @@ linguas.factory('TranslationService', function ($q) {
       return mDefer.promise;
     },
 
-    getTranslationBunches: function () {
+    getTranslationBunches: function (level) {
       var mDefer = $q.defer();
+
+      if (!level) level = 'a1'
 
       var TranslationBunch = Parse.Object.extend("TranslationBunch");
       var query = new Parse.Query(TranslationBunch);
+      query.equalTo("level", level);
       query.include("translations");
       query.descending("createdAt");
       query.find({

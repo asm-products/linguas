@@ -1,5 +1,5 @@
-linguas.directive('createBunch', ['$window', 'TranslationService' ,
-  function ($window, TranslationService) {
+linguas.directive('createBunch', ['$window', '$routeParams', 'TranslationService' ,
+  function ($window, $routeParams, TranslationService) {
     return {
       restrict: 'AE',
       replace: true,
@@ -7,6 +7,7 @@ linguas.directive('createBunch', ['$window', 'TranslationService' ,
       controller: function ($scope) {
 
         $scope.user = Parse.User.current();
+        $scope.level = $routeParams.level ? $routeParams.level : 'a1'
 
         $scope.languages = availableLanguages;
         $scope.selectedLanguage = $scope.languages[0];
@@ -27,7 +28,7 @@ linguas.directive('createBunch', ['$window', 'TranslationService' ,
 
         $scope.createTranslationBunch = function (translation) {
           console.log("translation bunch created")
-          TranslationService.createTranslationBunch(translation).then(
+          TranslationService.createTranslationBunch(translation, $scope.level).then(
             function (translationBunch) {
 
               $window.location.reload();

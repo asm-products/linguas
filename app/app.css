@@ -80,6 +80,14 @@ a:visited {
 .container {
     width: 600px;
     margin: 0 auto;
+    padding-top: 50px;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    border-radius: 0;
 }
 
 .create-translation-form {
