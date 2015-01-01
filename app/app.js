@@ -30,10 +30,11 @@ var availableLanguages = [
   {name: 'English', code: 'en-us'},
   {name: 'Turkish', code: 'tr-tr'},
   {name: 'German', code: 'de-de'},
-  {name: 'Arabic', code: 'ar-sa'},
-  {name: 'Russian', code: 'ru-ru'},
   {name: 'Spanish', code: 'es-es'},
-  {name: 'French', code: 'fr-fr'}
+  {name: 'Italian', code: 'it-it'},
+  {name: 'French', code: 'fr-fr'},
+  {name: 'Russian', code: 'ru-ru'},
+  {name: 'Arabic', code: 'ar-sa'}
 ];
 
 var linguas = angular.module('TranslationFeedApp', ['ngStorage', 'ngRoute', 'ngDialog', 'ui.bootstrap', 'ui.bootstrap.tooltip', 'ui.bootstrap.dropdown'])
