@@ -28,13 +28,17 @@ window.fbAsyncInit = function () {
 
 var availableLanguages = [
   {name: 'English', code: 'en-us'},
-  {name: 'Turkish', code: 'tr-tr'},
-  {name: 'German', code: 'de-de'},
-  {name: 'Spanish', code: 'es-es'},
-  {name: 'Italian', code: 'it-it'},
-  {name: 'French', code: 'fr-fr'},
-  {name: 'Russian', code: 'ru-ru'},
-  {name: 'Arabic', code: 'ar-sa'}
+  {name: 'Türkçe', code: 'tr-tr'},
+  {name: 'Deutsch', code: 'de-de'},
+  {name: 'Español', code: 'es-es'},
+  {name: 'Italiano', code: 'it-it'},
+  {name: 'Français', code: 'fr-fr'},
+  {name: 'Português', code: 'pt-pt'},
+  {name: 'Pусский', code: 'ru-ru'},
+  {name: 'العربية', code: 'ar-sa'},
+  {name: '한국의', code: 'ko'},
+  {name: '中國', code: 'zh-cn'},
+  {name: '日本人', code: 'ja'}
 ];
 
 var linguas = angular.module('TranslationFeedApp', ['ngStorage', 'ngRoute', 'ngDialog', 'ui.bootstrap', 'ui.bootstrap.tooltip', 'ui.bootstrap.dropdown'])
