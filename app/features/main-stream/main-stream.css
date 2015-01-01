@@ -68,6 +68,8 @@
 }
 
 .translation-bunch .translation .owner {
+    height: 0;
+    margin-top: -3px;
     margin-left: 40px;
     float: left;
     font-size: .7em;
