@@ -56,6 +56,10 @@ module.exports = function (grunt) {
         src: ['index.html'],
         dest: 'dist/'
       },
+      manifest: {
+        src: ['manifest.json'],
+        dest: 'dist/'
+      },
       maps: {
         expand: true,
         flatten: true,
