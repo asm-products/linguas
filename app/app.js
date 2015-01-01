@@ -185,7 +185,7 @@ linguas.factory('TranslationService', function ($q) {
       var TranslationBunch = Parse.Object.extend("TranslationBunch");
       var query = new Parse.Query(TranslationBunch);
       query.equalTo("level", level);
-      query.include("translations");
+      query.include("translations.owner");
       query.descending("createdAt");
       query.find({
         success: function (results) {

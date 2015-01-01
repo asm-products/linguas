@@ -23,8 +23,12 @@
             </button>
         </div>
     </div>
-    <button ng-if="user" type="button" class="btn btn-default add-translate-btn" ng-hide="addingTranslation"
-            ng-click="showAddTranslationForm()">
-        add translation
-    </button>
+    <div class=" add-translate-btn" tooltip="{{user ? '' : 'You need to login to add translation.'}}"
+         tooltip-placement="bottom">
+        <button type="button" ng-class="{disabled: !user}"
+                class="btn btn-default" ng-hide="addingTranslation"
+                ng-click="showAddTranslationForm()">
+            add translation
+        </button>
+    </div>
 </div>

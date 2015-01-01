@@ -30,5 +30,7 @@
               tooltip="translate words"
               ng-click="addWordTranslation(bunch, translation)"></span>
     -->
-
+    <div class="owner has-transition">
+        added by {{translation.attributes.owner.attributes.firstName}} {{translation.attributes.owner.attributes.lastName}}
+    </div>
 </div>

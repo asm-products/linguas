@@ -60,11 +60,25 @@
 }
 
 .translation-bunch .translation .sentence {
-    max-width: 90%;
+    width: 90%;
     float: left;
     cursor: default;
     min-height: 30px;
     padding-left: 10px;
+}
+
+.translation-bunch .translation .owner {
+    margin-left: 40px;
+    float: left;
+    font-size: .7em;
+    /*font-family: Arial;*/
+    color: #aaa;
+    font-weight: 300;
+    opacity: 0;
+    cursor: default;
+}
+.translation-bunch .translation:hover .owner {
+    opacity: 1;
 }
 
 .translation-bunch .translation .sentence .word:after {
