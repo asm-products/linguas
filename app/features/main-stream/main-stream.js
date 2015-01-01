@@ -1,9 +1,9 @@
-linguas.controller('MainStreamController', ['$scope', '$window', '$routeParams', '$localStorage', 'TranslationService',
-    function ($scope, $window, $routeParams, $localStorage, TranslationService) {
+linguas.controller('MainStreamController', ['$scope', '$rootScope', '$window', '$routeParams', '$localStorage', 'TranslationService',
+    function ($scope, $rootScope, $window, $routeParams, $localStorage, TranslationService) {
 
-      // used for showing or hiding the 'add translation' button
       $scope.user = Parse.User.current();
       $scope.level = $routeParams.level ? $routeParams.level : 'a1'
+      $rootScope.level = $scope.level
 
       $scope.translationBunches = null;
       $scope.languages = availableLanguages.slice(0);

@@ -1,8 +1,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html ng-app="TranslationFeedApp">
-<head lang="en">
+<head lang="en" profile="http://www.w3.org/2005/10/profile">
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="app/assets/img/favicon.png">
+
+    <!-- for chrome-android bar color -->
+    <meta name="theme-color" content="#2c3e50">
+
+    <!-- for chrome-android app icon -->
+    <link rel="icon" sizes="192x192" href="app/assets/img/logo-chrome.png">
+
     <title>Linguas</title>
 
     <!-- build:css app/css/libs.css -->
@@ -20,73 +31,9 @@
 </head>
 <body ng-controller="RootController">
 
-<nav class="navbar navbar-inverse navbar-embossed" role="navigation">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
-            <span class="sr-only">Toggle navigation</span>
-        </button>
-        <a class="navbar-brand linguas-title" href="#">
-            Linguas
-        </a>
-    </div>
-    <div class="collapse navbar-collapse" id="navbar-collapse-01">
-        <ul class="nav navbar-nav">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    Language level <b class="caret"></b>
-                </a>
-                <span class="dropdown-arrow"></span>
-                <ul class="dropdown-menu">
-                    <li><a href="/#/a1">A1</a></li>
-                    <li><a href="/#/a2">A2</a></li>
-                    <li><a href="/#/b1">B1</a></li>
-                    <li><a href="/#/b2">B2</a></li>
-                    <li><a href="/#/c1">C1</a></li>
-                    <li><a href="/#/c2">C2</a></li>
-                </ul>
-            </li>
-        </ul>
+<navbar></navbar>
 
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown" ng-if="user">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    {{user.attributes.firstName}} {{user.attributes.lastName}}
-                </a>
-                <span class="dropdown-arrow"></span>
-                <ul class="dropdown-menu">
-                    <li><a ng-click="logout()">logout</a></li>
-                </ul>
-            </li>
-            <facebook-login ng-if="!user"></facebook-login>
-        </ul>
-    </div>
-    <!-- /.navbar-collapse -->
-</nav>
-
-<div class="container">
-
-    <!--<h3 class="linguas-title">
-        <span class="primary-title" tooltip-html-unsafe="{{description}}" tooltip-placement="bottom">Linguas</span>,
-        Translation Feed
-    </h3>-->
-
-
-    <!-- primary language selection -->
-    <!--<div class="primary-language-selection btn-group" dropdown is-open="status.isopen">
-        <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled" ng-cloak>
-            I speak {{primaryLanguage.name}} <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li ng-repeat="language in languages">
-                <a href="#" ng-click="setPrimaryLanguage(language)">{{language.name}}</a>
-            </li>
-        </ul>
-    </div>-->
-
-
-    <div ng-view></div>
-
-</div>
+<div ng-view></div>
 
 <!-- build:js app/js/app.js -->
 <script src="bower_components/jQuery/dist/jquery.min.js"></script>
@@ -94,11 +41,13 @@
 <script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src="bower_components/ngDialog/js/ngDialog.min.js"></script>
 <script src="bower_components/ngstorage/ngStorage.min.js"></script>
+<script src="bower_components/flat-ui/dist/js/flat-ui.min.js"></script>
 <script src="app/assets/js/parse-1.3.0.min.js"></script>
 <script src="app/assets/js/cheet.min.js"></script>
 <script src="app/assets/js/ui-bootstrap-tpls.min.js"></script>
 
 <script src="app/app.js"></script>
+<script src="app/features/navbar/navbar.js"></script>
 <script src="app/features/main-stream/main-stream.js"></script>
 <script src="app/features/translation/create/create-translation.js"></script>
 <script src="app/features/translation-bunch/create/create-bunch.js"></script>
