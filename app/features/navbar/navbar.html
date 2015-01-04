@@ -21,6 +21,26 @@
                 </div>
             </div>
 
+            <a class="navbar-text" style="opacity: .2;" tooltip-html-unsafe="{{dictionary.linguas_description}}"
+               tooltip-placement="bottom">
+                {{dictionary.what_is_linguas}}
+            </a>
+
+            <!-- primary language selection -->
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a data-toggle="dropdown">
+                        <!--{{primaryLanguage.name}}-->
+                        <img ng-src="/app/assets/img/flags/{{primaryLanguage.code}}.png" style="height: 20px"/>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ng-repeat="language in languages">
+                            <a ng-click="setPrimaryLanguage(language)">{{language.name}}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown" ng-if="user">
                     <a data-toggle="dropdown">
@@ -39,6 +59,8 @@
                 </ul>-->
                 <facebook-login ng-if="!user"></facebook-login>
             </ul>
+
+
         </div>
         <!-- /.navbar-collapse -->
     </div>

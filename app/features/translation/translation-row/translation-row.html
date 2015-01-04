@@ -4,7 +4,7 @@
     <img ng-src="/app/assets/img/flags/{{translation.attributes.language}}.png"/>
 
     <!--listen btn -->
-    <span class="fui-volume listen-btn has-transition" tooltip="listen" ng-click="listenTranslation(translation)">
+    <span class="fui-volume listen-btn has-transition" tooltip="{{dictionary.listen}}" ng-click="listenTranslation(translation)">
     </span>
 
     <!-- sentence -->
@@ -20,7 +20,7 @@
     </div>-->
 
     <!-- delete btn -->
-    <span ng-if="isOwner" tooltip="delete" class="fui-cross delete-btn has-transition"
+    <span ng-if="isOwner" tooltip="{{dictionary.delete}}" class="fui-cross delete-btn has-transition"
           ng-click="removeTranslation(translation)">
     </span>
 
@@ -31,6 +31,6 @@
               ng-click="addWordTranslation(bunch, translation)"></span>
     -->
     <div class="owner has-transition">
-        added by {{translation.attributes.owner.attributes.firstName}} {{translation.attributes.owner.attributes.lastName}}
+        {{dictionary.added_by}} {{translation.attributes.owner.attributes.firstName}} {{translation.attributes.owner.attributes.lastName}}
     </div>
 </div>

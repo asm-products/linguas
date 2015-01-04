@@ -1,5 +1,5 @@
-linguas.directive('translationListRow', ['$window', 'TranslationService',
-  function ($window, TranslationService) {
+linguas.directive('translationListRow', ['$window', '$rootScope', 'TranslationService',
+  function ($window, $rootScope, TranslationService) {
     return {
       restrict: 'AE',
       replace: true,
@@ -9,6 +9,8 @@ linguas.directive('translationListRow', ['$window', 'TranslationService',
       },
       templateUrl: 'app/features/translation/translation-row/translation-row.html',
       controller: function ($scope) {
+
+        $scope.dictionary = $rootScope.dictionary
 
         if ($scope.translation.attributes && $scope.translation.attributes.owner && Parse.User.current()) {
           $scope.isOwner = Parse.User.current().id == $scope.translation.attributes.owner.id

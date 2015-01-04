@@ -1,5 +1,5 @@
-linguas.directive('createTranslation', ['$window', 'TranslationService' ,
-  function ($window, TranslationService) {
+linguas.directive('createTranslation', ['$window', '$rootScope', 'TranslationService' ,
+  function ($window, $rootScope, TranslationService) {
     return {
       restrict: 'AE',
       replace: true,
@@ -11,6 +11,7 @@ linguas.directive('createTranslation', ['$window', 'TranslationService' ,
 
         $scope.user = Parse.User.current();
         $scope.languages = availableLanguages.slice(0);
+        $scope.dictionary = $rootScope.dictionary
 
         $scope.addingTranslation = false
         $scope.selectedLanguage = $scope.languages[0]

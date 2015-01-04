@@ -1,9 +1,11 @@
-linguas.directive('facebookLogin', function ($window) {
+linguas.directive('facebookLogin', function ($window, $rootScope) {
   return {
     restrict: 'AE',
     replace: true,
-    template: '<p class="navbar-text" ng-click="login()"><a>Login with Facebook</a></p>',
+    template: '<p class="navbar-text" ng-click="login()"><a>{{dictionary.connect_with_facebook}}</a></p>',
     controller: function ($scope) {
+
+      $scope.dictionary = $rootScope.dictionary
 
       $scope.login = function () {
         Parse.FacebookUtils.logIn(null, {

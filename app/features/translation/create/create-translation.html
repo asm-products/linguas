@@ -12,7 +12,7 @@
         </div>
 
         <div class="condensed-col col-sm-6">
-            <input class="form-control" ng-model="sentence" type="text" placeholder="Sentence"/>
+            <input class="form-control" ng-model="sentence" type="text" placeholder="{{dictionary.sentence}}"/>
         </div>
         <div class="col-sm-3" style="text-align: right">
             <button class="btn btn-primary" ng-click="addTranslation(); addingTranslation = false">
@@ -23,12 +23,12 @@
             </button>
         </div>
     </div>
-    <div class=" add-translate-btn" tooltip="{{user ? '' : 'You need to login to add translation.'}}"
+    <div class=" add-translate-btn" tooltip="{{user ? '' : dictionary.login_to_add_translation}}"
          tooltip-placement="bottom">
         <button type="button" ng-class="{disabled: !user}"
                 class="btn btn-default" ng-hide="addingTranslation"
                 ng-click="showAddTranslationForm()">
-            add translation
+            {{dictionary.add_translation}}
         </button>
     </div>
 </div>

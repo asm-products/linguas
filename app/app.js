@@ -1,46 +1,3 @@
-Parse.initialize("1OvgqBw2CbJZ5imywS7BnQYcSv5ZxhDoUxjMKMBu", "9S6LjTTm9iyLiTrsqgTieRdQB7TXrM6020F3tmKV");
-
-window.fbAsyncInit = function () {
-  Parse.FacebookUtils.init({ // this line replaces FB.init({
-    appId: '395094303975272', // Facebook App ID
-    status: true, // check Facebook Login status
-    cookie: true, // enable cookies to allow Parse to access the session
-    xfbml: true,
-    version: 'v2.1'
-  });
-
-  // Run code after the Facebook SDK is loaded.
-};
-
-(function (d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {
-    return;
-  }
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-
-/* end of parse and facebook configuration  */
-
-
-var availableLanguages = [
-  {name: 'English', code: 'en-us'},
-  {name: 'Türkçe', code: 'tr-tr'},
-  {name: 'Deutsch', code: 'de-de'},
-  {name: 'Español', code: 'es-es'},
-  {name: 'Italiano', code: 'it-it'},
-  {name: 'Français', code: 'fr-fr'},
-  {name: 'Português', code: 'pt-pt'},
-  {name: 'Pусский', code: 'ru-ru'},
-  {name: 'العربية', code: 'ar-sa'},
-  {name: '한국의', code: 'ko'},
-  {name: '中國', code: 'zh-cn'},
-  {name: '日本人', code: 'ja'}
-];
-
 var linguas = angular.module('TranslationFeedApp', ['ngStorage', 'ngRoute', 'ngDialog', 'ui.bootstrap', 'ui.bootstrap.tooltip', 'ui.bootstrap.dropdown'])
 
 linguas.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
@@ -66,31 +23,11 @@ linguas.controller('RootController', ['$scope', '$window', '$routeParams', '$loc
       $scope.description = "<span class='description'><span class='linguas-title'>Linguas</span>, " + DictionaryService.en.description + "</span>";
 
       $scope.user = Parse.User.current();
-      $scope.primaryLanguage;
 
       $scope.logout = function () {
         Parse.User.logOut();
         $window.location.reload();
       };
-
-      // getting primary language if selected before
-      var isLanguageSet = false;
-      if ($localStorage.primaryLanguage) {
-        var languages = availableLanguages.filter(function (language) {
-          return language.code == $localStorage.primaryLanguage.code;
-        });
-        $scope.primaryLanguage = languages[0]
-      } else {
-        $scope.primaryLanguage = availableLanguages[0]
-      }
-
-      $scope.setPrimaryLanguage = function (language) {
-        $scope.primaryLanguage = language;
-        $localStorage.primaryLanguage = $scope.primaryLanguage;
-        setTimeout(function () {
-          $window.location.reload();
-        }, 300);
-      }
 
       cheet('o p e n s i m s i m', function () {
         $scope.opensimsim = true;
