@@ -21,6 +21,7 @@ linguas.controller('RootController', ['$scope', '$window', '$routeParams', '$loc
     function ($scope, $window, $routeParams, $localStorage, DictionaryService) {
 
       $scope.user = Parse.User.current();
+      $scope.isThisChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 
       $scope.logout = function () {
         Parse.User.logOut();

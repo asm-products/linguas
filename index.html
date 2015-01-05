@@ -34,11 +34,17 @@
     <!-- endbuild -->
 </head>
 <body ng-controller="RootController">
+
+<!-- needed for facebook sdk -->
 <div id="fb-root"></div>
 
 <navbar></navbar>
 
 <div ng-view></div>
+
+<a href="https://chrome.google.com/webstore/detail/linguas/ddfofeaioekkopafoamkdfokbkloiimc" ng-show="isThisChrome" class="install-chrome-app-message has-transition hidden-xs">
+    {{dictionary.install_chrome_app}}
+</a>
 
 <!-- build:js app/js/app.js -->
 <script src="bower_components/jQuery/dist/jquery.min.js"></script>

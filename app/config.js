@@ -42,6 +42,7 @@ var dictionary = {
   en_us: {
     what_is_linguas: "What is Linguas?",
     linguas_description: "Linguas is a web site where we practice languages by learning a new sentence every day. One English sentence is added every morning and the translations in other languages are added by the users voluntarily. Therefore, while users practice languages they also help others to learn. If you want, you can also contribute by adding translations in the languages you speak.",
+    install_chrome_app: "Click to install Linguas Chrome Extension",
     connect_with_facebook: "Connect with Facebook",
     login_to_add_translation: "You need to login to add translation.",
     a1: "Beginner level",
@@ -59,6 +60,7 @@ var dictionary = {
   tr_tr: {
     what_is_linguas: "Linguas nedir?",
     linguas_description: "Linguas bizim her gün yeni bir cümle öğrenerek dilimizi geliştirdiğimiz bir web sitesidir. Her sabah yeni bir İngilizce cümle eklenir ve gönüllü kullanıcılar da bu cümleleri diğer dillere çevirir. Bu şekilde kullanıcılarımız dil pratiği yaparken aynı zamanda başka insanlara da yardım etmiş olurlar. Eğer isterseniz siz de cümleleri bildiğiniz dillere çevirerek katkıda bulunabilirsiniz.",
+    install_chrome_app: "Linguas Chrome Eklentisini yüklemek için tıklayın",
     connect_with_facebook: "Facebook ile bağlan",
     login_to_add_translation: "Çeviri ekleyebilmek için giriş yapmalısınız.",
     a1: "Başlangıç seviyesi",
