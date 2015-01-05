@@ -35,8 +35,8 @@ linguas.directive('translationListRow', ['$window', '$rootScope', 'TranslationSe
         }
 
         $scope.listenTranslation = function (translation) {
-          window.open("http://translate.google.com/translate_tts?ie=UTF-8&q=" + translation.attributes.sentence
-              + "&tl=" + translation.attributes.language,
+          window.open("http://translate.google.com/translate_tts?ie=UTF-8&q=" + translation.sentence
+              + "&tl=" + translation.language,
             translation.sentence, "width=400, height=150");
         }
 

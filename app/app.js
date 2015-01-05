@@ -4,6 +4,8 @@ linguas.config(['$routeProvider', '$httpProvider', function ($routeProvider, $ht
 //  $httpProvider.defaults.useXDomain = true;
 //  delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
+  $httpProvider.interceptors.push('AuthenticationInterceptor');
+
   $routeProvider.
     when('/', {
       templateUrl: 'app/features/main-stream/main-stream.html'
@@ -34,7 +36,7 @@ linguas.controller('RootController', ['$scope', '$window', '$routeParams', '$loc
     }]
 );
 
-linguas.factory('TranslationService', function ($q) {
+linguas.factory('TranslationService', function ($q, $http) {
 
   return {
 
@@ -121,7 +123,26 @@ linguas.factory('TranslationService', function ($q) {
 
       if (!level) level = 'a1'
 
-      var TranslationBunch = Parse.Object.extend("TranslationBunch");
+      var conditions = '{"level":"' + level + '"}'
+
+      console.log(conditions)
+      $http.get(
+        'https://api.parse.com/1/classes/TranslationBunch',
+        {
+          params: {
+            where: conditions,
+            include: 'translations.owner',
+            order: '-createdAt'
+          }
+        })
+        .success(function (data, status, headers, config) {
+          mDefer.resolve(data.results);
+        }).
+        error(function (data, status, headers, config) {
+          mDefer.reject(data);
+        });
+
+      /*var TranslationBunch = Parse.Object.extend("TranslationBunch");
       var query = new Parse.Query(TranslationBunch);
       query.equalTo("level", level);
       query.include("translations.owner");
@@ -133,7 +154,7 @@ linguas.factory('TranslationService', function ($q) {
         error: function (error) {
           mDefer.reject(error);
         }
-      });
+      });*/
 
       return mDefer.promise;
     },
@@ -245,4 +266,48 @@ linguas.factory('DictionaryService', function ($q) {
 
   }
 })
+
+linguas.factory('AuthenticationInterceptor', ['$rootScope', '$q', '$window', '$location', function ($rootScope, $q, $window, $location) {
+  var request = function (config) {
+    if (config && config.url) {
+      var isParseRequest = config.url.indexOf('api.parse.com') > 0
+
+      if (isParseRequest) {
+        console.log(config.url)
+
+        config.headers = config.headers || {};
+        config.headers['X-Parse-Application-Id'] = '1OvgqBw2CbJZ5imywS7BnQYcSv5ZxhDoUxjMKMBu'
+        config.headers['X-Parse-REST-API-Key'] = 'YoQCqXUxj0rVFWLfVdpHHBoT6zcVIyiU5kX6FYPK'
+      }
+
+    }
+    return config;
+  };
+  /*
+   var response = function (response) {
+   return response || $q.when(response);
+   };
+
+   var responseError = function (response) {
+   if (response.status === 401) {
+   $window.localStorage.removeItem('user');
+   $window.localStorage.removeItem('profile');
+   */
+  /*
+   if($window.fbAsyncInit){
+   $window.fbAsyncInit();
+   }
+   */
+  /*
+   } else if (response.status === 403) {
+   console.log("User not authorized to login into maidan.");
+   toastr.info("Unfortunately you are not allowed to signup yet. Stay patient.");
+   }
+   return response || $q.when(response);
+   };*/
+
+  return {
+    request: request
+  };
+}])
 
