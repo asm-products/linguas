@@ -63,7 +63,7 @@ module.exports = function (grunt) {
       maps: {
         expand: true,
         flatten: true,
-        src: ['bower_components/angular/angular.min.js.map'],
+        src: ['bower_components/angular/angular.min.js.map', 'bower_components/angular-route/angular-route.min.js.map'],
         dest: 'dist/app/js/'
       },
       templates: {

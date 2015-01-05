@@ -1,24 +1,21 @@
 Parse.initialize("1OvgqBw2CbJZ5imywS7BnQYcSv5ZxhDoUxjMKMBu", "9S6LjTTm9iyLiTrsqgTieRdQB7TXrM6020F3tmKV");
 
-window.fbAsyncInit = function () {
+window.fbAsyncInit = function() {
   Parse.FacebookUtils.init({ // this line replaces FB.init({
-    appId: '395094303975272', // Facebook App ID
-    status: true, // check Facebook Login status
-    cookie: true, // enable cookies to allow Parse to access the session
-    xfbml: true,
-    version: 'v2.1'
+    appId      : '395094303975272', // Facebook App ID
+    status     : true,  // check Facebook Login status
+    cookie     : true,  // enable cookies to allow Parse to access the session
+    xfbml      : true,  // initialize Facebook social plugins on the page
+    version    : 'v2.2' // point to the latest Facebook Graph API version
   });
 
   // Run code after the Facebook SDK is loaded.
 };
 
-(function (d, s, id) {
+(function(d, s, id){
   var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {
-    return;
-  }
-  js = d.createElement(s);
-  js.id = id;
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/sdk.js";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
