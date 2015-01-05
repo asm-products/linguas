@@ -148,7 +148,7 @@ linguas.factory('TranslationService', function ($q) {
 
       } else if (translation) {
 
-        bunch.attributes.translations.push(translation);
+        bunch.addUnique("translations", translation)
         return this.saveTranslationBunch(bunch)
 
       } else {
@@ -169,13 +169,7 @@ linguas.factory('TranslationService', function ($q) {
       translation.destroy({
         success: function (translation) {
 
-          // iterating through all translations, finding the index and splicing the list
-          for (var i = 0; i < bunch.attributes.translations.length; i++) {
-            if (bunch.attributes.translations[i] == translation) {
-              bunch.attributes.translations.splice(i, 1);
-              break;
-            }
-          }
+          bunch.remove("translations", translation)
 
           if (bunch.attributes.translations.length > 0) {
             // if there are more translations, just save the bunch
