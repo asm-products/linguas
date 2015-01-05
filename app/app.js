@@ -20,8 +20,6 @@ linguas.config(['$routeProvider', '$httpProvider', function ($routeProvider, $ht
 linguas.controller('RootController', ['$scope', '$window', '$routeParams', '$localStorage', 'DictionaryService',
     function ($scope, $window, $routeParams, $localStorage, DictionaryService) {
 
-      $scope.description = "<span class='description'><span class='linguas-title'>Linguas</span>, " + DictionaryService.en.description + "</span>";
-
       $scope.user = Parse.User.current();
 
       $scope.logout = function () {

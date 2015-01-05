@@ -73,12 +73,12 @@
     margin-left: 40px;
     float: left;
     font-size: .7em;
-    /*font-family: Arial;*/
     color: #aaa;
     font-weight: 300;
     opacity: 0;
     cursor: default;
 }
+
 .translation-bunch .translation:hover .owner {
     opacity: 1;
 }

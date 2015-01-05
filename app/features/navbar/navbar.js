@@ -6,26 +6,13 @@ linguas.directive('navbar', function ($location, $rootScope, $localStorage, $win
     controller: function ($scope) {
 
       $scope.user = Parse.User.current();
-      $scope.languages = availableLanguages.slice(0);
 
-      var existingPrimaryLanguageCode;
-      if ($scope.user && $scope.user.attributes.primaryLanguage) {
-        // getting primary language from users info
-        existingPrimaryLanguageCode = $scope.user.attributes.primaryLanguage
-      } else if ($localStorage.primaryLanguage) {
-        // getting primary language from local storage
-        existingPrimaryLanguageCode = $localStorage.primaryLanguage
-      }
+      // available languages are only "English" and "Turkish" so far. So add only these two.
+      var languages = availableLanguages.slice(0);
+      $scope.languages = new Array();
+      $scope.languages[0] = languages[0]
+      $scope.languages[1] = languages[1]
 
-      // finding appropriate language from language-code
-      if (existingPrimaryLanguageCode) {
-        var languages = availableLanguages.filter(function (language) {
-          return language.code == existingPrimaryLanguageCode
-        });
-        $scope.primaryLanguage = languages[0]
-      } else {
-        $scope.primaryLanguage = availableLanguages[0]
-      }
 
       // setting dictionary
       $scope.setDictionary = function (code) {
@@ -37,7 +24,7 @@ linguas.directive('navbar', function ($location, $rootScope, $localStorage, $win
         $scope.dictionary = $rootScope.dictionary
       }
 
-      $scope.setPrimaryLanguage = function (language) {
+      $scope.changePrimaryLanguage = function (language) {
         $scope.primaryLanguage = language;
         if ($scope.user) {
           $scope.user.attributes.primaryLanguage = language.code
@@ -57,7 +44,26 @@ linguas.directive('navbar', function ($location, $rootScope, $localStorage, $win
         $location.path('/' + level)
       }
 
+      var existingPrimaryLanguageCode = null;
+      if ($scope.user && $scope.user.attributes.primaryLanguage) {
+        // getting primary language from users info
+        existingPrimaryLanguageCode = $scope.user.attributes.primaryLanguage
+      } else if ($localStorage.primaryLanguage) {
+        // getting primary language from local storage
+        existingPrimaryLanguageCode = $localStorage.primaryLanguage
+      }
+
+      // finding appropriate language from language-code
+      if (existingPrimaryLanguageCode && existingPrimaryLanguageCode != null) {
+        var languages = availableLanguages.filter(function (language) {
+          return language.code == existingPrimaryLanguageCode
+        });
+        $scope.primaryLanguage = languages[0]
+      } else {
+        $scope.primaryLanguage = availableLanguages[0]
+      }
       $scope.setDictionary($scope.primaryLanguage.code)
+
     }
   };
 });
