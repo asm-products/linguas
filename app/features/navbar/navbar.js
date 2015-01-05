@@ -50,7 +50,11 @@ linguas.directive('navbar', function ($location, $rootScope, $localStorage, $win
         existingPrimaryLanguageCode = $scope.user.attributes.primaryLanguage
       } else if ($localStorage.primaryLanguage) {
         // getting primary language from local storage
-        existingPrimaryLanguageCode = $localStorage.primaryLanguage
+
+        if ($localStorage.primaryLanguage.code)
+          existingPrimaryLanguageCode = $localStorage.primaryLanguage.code  // for old versions
+        else
+          existingPrimaryLanguageCode = $localStorage.primaryLanguage
       }
 
       // finding appropriate language from language-code
