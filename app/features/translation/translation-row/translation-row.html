@@ -1,14 +1,14 @@
 <div class="translation clearfix">
 
     <!-- flag -->
-    <img ng-src="/app/assets/img/flags/{{translation.language}}.png"/>
+    <img ng-src="/app/assets/img/flags/{{translation.attributes.language}}.png"/>
 
     <!--listen btn -->
     <span class="fui-volume listen-btn has-transition" tooltip="{{dictionary.listen}}" ng-click="listenTranslation(translation)">
     </span>
 
     <!-- sentence -->
-    <div class="sentence">{{translation.sentence}}</div>
+    <div class="sentence">{{translation.attributes.sentence}}</div>
 
     <!-- used when showing word translations -->
     <!--<div class="sentence">
@@ -31,6 +31,6 @@
               ng-click="addWordTranslation(bunch, translation)"></span>
     -->
     <div class="owner has-transition">
-        {{dictionary.added_by}} {{translation.owner.firstName}} {{translation.owner.lastName}}
+        {{dictionary.added_by}} {{translation.attributes.owner.attributes.firstName}} {{translation.attributes.owner.attributes.lastName}}
     </div>
 </div>
