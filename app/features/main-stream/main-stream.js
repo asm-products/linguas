@@ -10,6 +10,8 @@ linguas.controller('MainStreamController', ['$scope', '$rootScope', '$window', '
 
       $scope.primaryLanguage = $localStorage.primaryLanguage || availableLanguages[0];
 
+      if (!$rootScope.dictionary || !$rootScope.dictionary[$scope.level])
+        $rootScope.dictionary = dictionary.en_us;
       $scope.levelTitle = $rootScope.dictionary[$scope.level]
 
       $scope.getTranslationBunches = function () {
