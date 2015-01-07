@@ -2,8 +2,8 @@ linguas.controller('MainStreamController', ['$scope', '$rootScope', '$window', '
     function ($scope, $rootScope, $window, $routeParams, $localStorage, TranslationService) {
 
       $scope.user = Parse.User.current();
-      $scope.level = $routeParams.level ? $routeParams.level : 'a1'
-      $rootScope.level = $scope.level
+      $scope.level = $routeParams.level ? $routeParams.level : 'a1';
+      $rootScope.level = $scope.level;
 
       $scope.translationBunches = null;
       $scope.languages = availableLanguages.slice(0);
@@ -12,7 +12,7 @@ linguas.controller('MainStreamController', ['$scope', '$rootScope', '$window', '
 
       if (!$rootScope.dictionary || !$rootScope.dictionary[$scope.level])
         $rootScope.dictionary = dictionary.en_us;
-      $scope.levelTitle = $rootScope.dictionary[$scope.level]
+      $scope.levelTitle = $rootScope.dictionary[$scope.level];
 
       $scope.getTranslationBunches = function () {
 
@@ -21,10 +21,10 @@ linguas.controller('MainStreamController', ['$scope', '$rootScope', '$window', '
             $scope.translationBunches = results;
           },
           function (error) {
-            console.error(error)
+            console.error(error);
           }
-        )
-      }
+        );
+      };
       $scope.getTranslationBunches();
 
     }]

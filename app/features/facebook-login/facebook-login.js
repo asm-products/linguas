@@ -5,7 +5,7 @@ linguas.directive('facebookLogin', function ($window, $rootScope) {
     template: '<p class="navbar-text" ng-click="login()"><a>{{dictionary.connect_with_facebook}}</a></p>',
     controller: function ($scope) {
 
-      $scope.dictionary = $rootScope.dictionary
+      $scope.dictionary = $rootScope.dictionary;
 
       $scope.login = function () {
         Parse.FacebookUtils.logIn(null, {
@@ -26,7 +26,7 @@ linguas.directive('facebookLogin', function ($window, $rootScope) {
             console.error("User cancelled the Facebook login or did not fully authorize.");
           }
         });
-      }
+      };
     }
   };
 });

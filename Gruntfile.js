@@ -91,10 +91,28 @@ module.exports = function (grunt) {
                 autoIndex: true,
                 ext: 'html'
             }
+        },
+        jshint: {
+            options: {
+                globals: {
+                    jQuery: true
+                }
+            },
+            all : [
+                'app/**/*.js',
+                'test/**/*.js',
+                '!app/assets/**'
+            ]
+        },
+        watch: {
+            files: ['<%= jshint.files %>'],
+            tasks: ['jshint', 'default']
         }
     });
 
     grunt.loadNpmTasks('grunt-http-server');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('default', [
         'useminPrepare',
