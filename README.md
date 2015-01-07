@@ -11,6 +11,5 @@ A web site where we practice languages by learning a new sentence every day. One
 * run  `bower install`
 * run  `grunt`
 * run  `grunt http-server`
-
-The website is now ready from om <b>`http://localhost:8080/` </b>
+The website is now ready from om **`http://localhost:8080/`**
 
