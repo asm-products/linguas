@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html ng-app="TranslationFeedApp">
+<head lang="en" profile="http://www.w3.org/2005/10/profile">
+
+    <title>Linguas</title>
+
+    <!-- mobile layout options -->
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- icons -->
+    <link rel="icon" type="image/png" href="app/assets/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="app/assets/img/logo-192.png">
+
+    <!-- for chrome-android bar color -->
+    <meta name="theme-color" content="#2c3e50">
+
+    <!-- android home screen app configuration-->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- build:css app/css/libs.css -->
+    <link rel="stylesheet" href="bower_components/flat-ui/dist/css/vendor/bootstrap.min.css"/>
+    <link rel="stylesheet" href="bower_components/flat-ui/dist/css/flat-ui.min.css"/>
+    <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog-theme-plain.min.css"/>
+    <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.min.css"/>
+    <!-- endbuild -->
+
+    <!-- build:less app/css/app.css -->
+    <link rel="stylesheet" href="app/app.css"/>
+    <link rel="stylesheet" href="app/features/main-stream/main-stream.css"/>
+    <link rel="stylesheet" href="app/features/translation/word-translations/create/create-word-translation.css"/>
+    <!-- endbuild -->
+</head>
+<body ng-controller="RootController">
+
+<!-- needed for facebook sdk -->
+<div id="fb-root"></div>
+
+<navbar></navbar>
+
+<div ng-view></div>
+
+<a href="https://chrome.google.com/webstore/detail/linguas/ddfofeaioekkopafoamkdfokbkloiimc" ng-show="isThisChrome" class="install-chrome-app-message has-transition hidden-xs">
+    {{dictionary.install_chrome_app}}
+</a>
+
+<!-- build:js app/js/app.js -->
+<script src="bower_components/jQuery/dist/jquery.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="bower_components/ngDialog/js/ngDialog.min.js"></script>
+<script src="bower_components/ngstorage/ngStorage.min.js"></script>
+<script src="bower_components/flat-ui/dist/js/flat-ui.min.js"></script>
+<script src="app/assets/js/parse-1.3.0.min.js"></script>
+<script src="app/assets/js/cheet.min.js"></script>
+<script src="app/assets/js/ui-bootstrap-tpls.min.js"></script>
+
+<script src="app/config.js"></script>
+<script src="app/app.js"></script>
+<script src="app/features/navbar/navbar.js"></script>
+<script src="app/features/main-stream/main-stream.js"></script>
+<script src="app/features/translation/create/create-translation.js"></script>
+<script src="app/features/translation-bunch/create/create-bunch.js"></script>
+<script src="app/features/translation-bunch/bunch-row/bunch-row.js"></script>
+<script src="app/features/translation/translation-row/translation-row.js"></script>
+<script src="app/features/facebook-login/facebook-login.js"></script>
+<!-- endbuild -->
+
+</body>
+</html>

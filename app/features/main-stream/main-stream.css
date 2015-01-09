@@ -1,0 +1,140 @@
+
+.condensed-col {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.translation-bunch-list {
+    list-style: none;
+}
+
+.translation-bunch-list .created-at {
+    color: #aaaaaa;
+    line-height: 40px;
+}
+
+.translation-bunch {
+    width: 100%;
+    list-style: none;
+    margin-bottom: 40px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.translation-bunch .sentence-input {
+    width: 260px;
+}
+
+.translation-bunch .translation {
+    width: 100%;
+    color: #333;
+    margin: 10px 0;
+    position: relative;
+}
+
+.translation-bunch .translation img {
+    float: left;
+    width: 30px;
+    height: 30px;
+}
+
+.translation-bunch .translation .listen-btn {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    left: -35px;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 50%;
+    opacity: 0;
+    cursor: pointer;
+    color: #aaaaaa;
+}
+
+.translation-bunch .translation:hover .listen-btn {
+    opacity: 1;
+}
+
+.translation-bunch .translation .listen-btn:hover {
+    background-color: #e2e2e2;
+}
+
+.translation-bunch .translation .sentence {
+    width: 90%;
+    float: left;
+    cursor: default;
+    min-height: 30px;
+    padding-left: 10px;
+}
+
+.translation-bunch .translation .owner {
+    height: 0;
+    margin-top: -3px;
+    margin-left: 40px;
+    float: left;
+    font-size: .7em;
+    color: #aaa;
+    font-weight: 300;
+    opacity: 0;
+    cursor: default;
+}
+
+.translation-bunch .translation:hover .owner {
+    opacity: 1;
+}
+
+.translation-bunch .translation .sentence .word:after {
+    /*margin-right: 6px;*/
+    /*content: " ";*/
+    /*background-color: red;*/
+    /*height: 100%;*/
+}
+
+.translation-bunch .translation .sentence .word.has-translation {
+    cursor: pointer;
+    border-bottom: 1px solid #d2d2d2;
+}
+
+.translation-bunch .translation .sentence .word.has-translation:hover {
+    color: #1abc9c;
+}
+
+.translation-bunch .translation .delete-btn {
+    top: 0;
+    right: 0;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    color: #bdc3c7;
+    opacity: 0;
+}
+
+.translation-bunch .translation .add-word-translation-btn {
+    top: 0;
+    right: 25px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    color: #1abc9c;
+    opacity: 0;
+}
+
+.translation-bunch .translation:hover .delete-btn, .translation-bunch .translation:hover .add-word-translation-btn {
+    opacity: 1;
+}
+
+.translation-bunch .translation .language {
+    opacity: 0;
+    color: #aaaaaa;
+    margin-left: 15px;
+}
+
+.translation-bunch:hover .translation .language {
+    opacity: 1;
+}
+
+.translation-bunch .add-translate-btn {
+    float: right;
+}

@@ -1,0 +1,152 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext,cyrillic-ext,greek-ext,cyrillic);
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+html[xmlns] .clearfix {
+    display: block;
+}
+
+* html .clearfix {
+    height: 1%;
+}
+
+/* end clearfix */
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f2f2f2;
+    color: #454545;
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 70px;
+}
+
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer !important;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background: none;
+}
+
+.dropdown-menu a {
+    cursor: pointer;
+}
+
+a {
+    color: #2ab081;
+    text-decoration: none;
+}
+
+a:visited {
+
+}
+
+.linguas-title {
+    font-family: 'Lobster', cursive;
+    color: #323232;
+    cursor: default;
+}
+
+.primary-title {
+    color: #ee4d46;
+}
+
+.has-transition {
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.install-chrome-app-message {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    max-width: 200px;
+    box-shadow: 0px 0px 5px #888;
+    background: #34495e;
+    color: #ecf0f1;
+    padding: 10px;
+    font-size: .8em;
+    text-align: center;
+    cursor: pointer;
+}
+
+.install-chrome-app-message:hover {
+    box-shadow: 0px 0px 15px #888;
+    background: #2c3e50;
+    color: #ecf0f1;
+}
+
+.list-container {
+    max-width: 600px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.create-translation-form {
+    margin-top: 20px;
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+h3 {
+    margin-top: 20px;
+}
+
+.description {
+    font-family: "Open Sans";
+    font-size: .8em;
+}
+
+.description .linguas-title {
+    font-size: 1.4em;
+    color: #ffffff;
+}
+
+.user-info {
+    height: 41px;
+    line-height: 41px;
+    color: #666;
+    display: inline-block;
+}
+
+.primary-language-selection {
+    float: right;
+}
+
+.primary-language-selection select {
+    margin-top: -6px;
+}

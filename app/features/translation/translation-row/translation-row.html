@@ -1,0 +1,36 @@
+<div class="translation clearfix">
+
+    <!-- flag -->
+    <img ng-src="/app/assets/img/flags/{{translation.attributes.language}}.png"/>
+
+    <!--listen btn -->
+    <span class="fui-volume listen-btn has-transition" tooltip="{{dictionary.listen}}" ng-click="listenTranslation(translation)">
+    </span>
+
+    <!-- sentence -->
+    <div class="sentence">{{translation.attributes.sentence}}</div>
+
+    <!-- used when showing word translations -->
+    <!--<div class="sentence">
+        <span ng-repeat="word in translation.words track by $index">
+            <span class="word has-transition" ng-class="{'has-translation': word.translation}"
+                  tooltip="{{word.translation}}">{{word.value}}</span>
+            <span> </span>
+        </span>
+    </div>-->
+
+    <!-- delete btn -->
+    <span ng-if="isOwner" tooltip="{{dictionary.delete}}" class="fui-cross delete-btn has-transition"
+          ng-click="removeTranslation(translation)">
+    </span>
+
+    <!-- add word translation btn -->
+    <!--
+        <span ng-if="user" class="fui-tag add-word-translation-btn has-transition"
+              tooltip="translate words"
+              ng-click="addWordTranslation(bunch, translation)"></span>
+    -->
+    <div class="owner has-transition">
+        {{dictionary.added_by}} {{translation.attributes.owner.attributes.firstName}} {{translation.attributes.owner.attributes.lastName}}
+    </div>
+</div>
