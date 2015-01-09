@@ -19,17 +19,6 @@
     <!-- android home screen app configuration-->
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="manifest" href="/manifest.json">
-    <div style="display: none">{{primaryLanguage.code}}</div>
-    <style ng-if="primaryLanguage.code == 'ar-sa'" type="text/css">
-        .tooltip {
-            direction: rtl;
-        }
-
-        .dir-rtl {
-            direction: rtl;
-        }
-    </style>
-
 
     <!-- build:css app/css/libs.css -->
     <link rel="stylesheet" href="bower_components/flat-ui/dist/css/vendor/bootstrap.min.css"/>
@@ -45,7 +34,7 @@
     <!-- endbuild -->
 
 </head>
-<body ng-controller="RootController">
+<body ng-controller="RootController" ng-class="{rtl: primaryLanguage.code == 'ar-sa'}">
 
 <!-- needed for facebook sdk -->
 <div id="fb-root"></div>
