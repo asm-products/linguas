@@ -79,21 +79,21 @@ var dictionary = {
         delete: "sil"
     },
     ar_sa: {
-        what_is_linguas: "Linguas ما هو ?",
-        linguas_description: "Linguas bizim her gün yeni bir cümle öğrenerek dilimizi geliştirdiğimiz bir web sitesidir. Her sabah yeni bir İngilizce cümle eklenir ve gönüllü kullanıcılar da bu cümleleri diğer dillere çevirir. Bu şekilde kullanıcılarımız dil pratiği yaparken aynı zamanda başka insanlara da yardım etmiş olurlar. Eğer isterseniz siz de cümleleri bildiğiniz dillere çevirerek katkıda bulunabilirsiniz.",
-        install_chrome_app: "Linguas Chrome Eklentisini yüklemek için tıklayın",
-        connect_with_facebook: "Facebook ile bağlan",
-        login_to_add_translation: "Çeviri ekleyebilmek için giriş yapmalısınız.",
-        a1: "Başlangıç seviyesi",
-        a2: "Temel seviye",
-        b1: "Orta altı seviye",
-        b2: "Orta seviye",
-        c1: "Orta üstü seviye",
-        c2: "İleri düzey",
-        add_translation: "çeviri ekle",
-        sentence: "Cümle",
-        added_by: "ekleyen",
-        listen: "dinle",
-        delete: "sil"
+        what_is_linguas: "ما هو Linguas ؟",
+        linguas_description: "LINGUAS هو موقع يساعد علي تعلم اللغات عن طريق أضافة جملة في اللغة الإنجليزية كل صباح ويتم إضافة ترجمات بلغات أخرى من قبل المستخدمين طوعا. لذلك، مشاركة المستخدمين اللغات تساعد أيضا آخرين للتعلم. إذا كنت تريد، يمكنك أيضا المساهمة بإضافة ترجمة بلغتك.",
+        install_chrome_app: "تثبيت ملحق chrome",
+        connect_with_facebook: "سجل دخول  Facebook",
+        login_to_add_translation: "يجب تسجيل الدخول لإضافة ترجمة.",
+        a1: "مستوى مبتدئ",
+        a2: "مستوى أساسي",
+        b1: "مستوى قبل المتوسط",
+        b2: "مستوى المتوسط",
+        c1: "مستوى فوق المتوسط",
+        c2: "مستوى متقدم",
+        add_translation: "إضافة ترجمة",
+        sentence: "جملة",
+        added_by: "ترجمة",
+        listen: "إستماع",
+        delete: "حذف"
     }
 };

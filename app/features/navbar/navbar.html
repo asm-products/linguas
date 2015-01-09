@@ -21,7 +21,7 @@
                 </div>
             </div>
 
-            <a class="navbar-text" style="opacity: .2;" tooltip-html-unsafe="{{dictionary.linguas_description}}"
+            <a class="navbar-text" ng-class="{'dir-rtl': primaryLanguage.code == 'ar-sa'}" style="opacity: .2;" tooltip-html-unsafe="{{dictionary.linguas_description}}"
                tooltip-placement="bottom">
                 {{dictionary.what_is_linguas}}
             </a>

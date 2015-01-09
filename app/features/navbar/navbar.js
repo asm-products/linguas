@@ -12,13 +12,16 @@ linguas.directive('navbar', function ($location, $rootScope, $localStorage, $win
       $scope.languages = [];
       $scope.languages[0] = languages[0];
       $scope.languages[1] = languages[1];
-      $scope.languages[8] = languages[8];
+      $scope.languages[2] = languages[8];
+
 
 
       // setting dictionary
       $scope.setDictionary = function (code) {
         if (code == "tr-tr") {
           $rootScope.dictionary = dictionary.tr_tr;
+        } else if (code == 'ar-sa'){
+          $rootScope.dictionary = dictionary.ar_sa;
         } else {
           $rootScope.dictionary = dictionary.en_us;
         }
