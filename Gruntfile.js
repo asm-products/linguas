@@ -102,7 +102,7 @@ module.exports = function (grunt) {
                 'app/**/*.js', 'test/**/*.js', '!app/assets/**']
         },
         watch: {
-            files: ['app/**/*.js', 'app/**/*.html', 'test/**/*.js'],
+            files: ['app/**/*.*', 'index.html', 'test/**/*.js'],
             tasks: ['jshint', 'default']
         }
     });
