@@ -11,15 +11,15 @@ linguas.directive('createTranslation', ['$window', '$rootScope', 'TranslationSer
 
         $scope.user = Parse.User.current();
         $scope.languages = availableLanguages.slice(0);
-        $scope.dictionary = $rootScope.dictionary
+        $scope.dictionary = $rootScope.dictionary;
 
-        $scope.addingTranslation = false
-        $scope.selectedLanguage = $scope.languages[0]
-        $scope.sentence = ""
+        $scope.addingTranslation = false;
+        $scope.selectedLanguage = $scope.languages[0];
+        $scope.sentence = "";
 
         $scope.setLanguage = function (language) {
           $scope.selectedLanguage = language;
-        }
+        };
 
         $scope.addTranslation = function () {
 
@@ -32,20 +32,20 @@ linguas.directive('createTranslation', ['$window', '$rootScope', 'TranslationSer
                 function (bunch) {
                 },
                 function (error) {
-                  console.log(error)
-                })
+                  console.log(error);
+                });
             },
             function (error) {
-              console.error(error)
+              console.error(error);
             }
-          )
-        }
+          );
+        };
 
         $scope.showAddTranslationForm = function () {
-          $scope.addingTranslation = true
-          $scope.selectedLanguage = $scope.languages[0]
-          $scope.translation = ""
-        }
+          $scope.addingTranslation = true;
+          $scope.selectedLanguage = $scope.languages[0];
+          $scope.translation = "";
+        };
 
       }
     };

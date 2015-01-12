@@ -10,10 +10,10 @@ linguas.directive('translationListRow', ['$window', '$rootScope', 'TranslationSe
       templateUrl: 'app/features/translation/translation-row/translation-row.html',
       controller: function ($scope) {
 
-        $scope.dictionary = $rootScope.dictionary
+        $scope.dictionary = $rootScope.dictionary;
 
         if ($scope.translation.attributes && $scope.translation.attributes.owner && Parse.User.current()) {
-          $scope.isOwner = Parse.User.current().id == $scope.translation.attributes.owner.id
+          $scope.isOwner = Parse.User.current().id == $scope.translation.attributes.owner.id;
         }
 
         $scope.removeTranslation = function () {
@@ -23,22 +23,22 @@ linguas.directive('translationListRow', ['$window', '$rootScope', 'TranslationSe
             function (bunch) {
 
               // if there is no more translaitons left in bunch, reload the page
-              if (bunch.attributes.translations.length == 0)
-                $window.location.reload()
+              if (bunch.attributes.translations.length === 0)
+                $window.location.reload();
             },
             function (error) {
-              console.log('Delete translation failed.')
-              console.log(error)
+              console.log('Delete translation failed.');
+              console.log(error);
             }
-          )
+          );
 
-        }
+        };
 
         $scope.listenTranslation = function (translation) {
-          window.open("http://translate.google.com/translate_tts?ie=UTF-8&q=" + translation.attributes.sentence
-              + "&tl=" + translation.attributes.language,
+          window.open("http://translate.google.com/translate_tts?ie=UTF-8&q=" + translation.attributes.sentence +
+              "&tl=" + translation.attributes.language,
             translation.sentence, "width=400, height=150");
-        }
+        };
 
         /*$scope.generateTranslatedWords = function (translation) {
 

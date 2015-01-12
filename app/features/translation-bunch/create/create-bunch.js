@@ -7,7 +7,7 @@ linguas.directive('createBunch', ['$window', '$routeParams', 'TranslationService
       controller: function ($scope) {
 
         $scope.user = Parse.User.current();
-        $scope.level = $routeParams.level ? $routeParams.level : 'a1'
+        $scope.level = $routeParams.level ? $routeParams.level : 'a1';
 
         $scope.languages = availableLanguages;
         $scope.selectedLanguage = $scope.languages[0];
@@ -17,31 +17,31 @@ linguas.directive('createBunch', ['$window', '$routeParams', 'TranslationService
 
           TranslationService.createTranslation($scope.selectedLanguage.code, $scope.sentence).then(
             function (translation) {
-              console.log("translation created. creating bunch now")
-              $scope.createTranslationBunch(translation)
+              console.log("translation created. creating bunch now");
+              $scope.createTranslationBunch(translation);
             },
             function (error) {
-              console.error(error)
+              console.error(error);
             }
-          )
-        }
+          );
+        };
 
         $scope.createTranslationBunch = function (translation) {
-          console.log("translation bunch created")
+          console.log("translation bunch created");
           TranslationService.createTranslationBunch(translation, $scope.level).then(
             function (translationBunch) {
 
               $window.location.reload();
             },
             function (error) {
-              console.error(error)
+              console.error(error);
             }
-          )
-        }
+          );
+        };
 
         $scope.setLanguage = function (language) {
           $scope.selectedLanguage = language;
-        }
+        };
       }
     };
   }]);

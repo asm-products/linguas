@@ -18,7 +18,7 @@ linguas.directive('createWordTranslation', ['ngDialog' ,
 
         $scope.setToLanguage = function(language) {
           $scope.toLanguage = language;
-        }
+        };
 
         $scope.createTranslation = function () {
 
@@ -27,10 +27,10 @@ linguas.directive('createWordTranslation', ['ngDialog' ,
               $window.location.reload();
             },
             function (error) {
-              console.error(error)
+              console.error(error);
             }
-          )
-        }
+          );
+        };
       }
     };
   }]);

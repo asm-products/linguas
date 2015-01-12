@@ -150,3 +150,7 @@ h3 {
 .primary-language-selection select {
     margin-top: -6px;
 }
+
+body.rtl .dir-rtl, body.rtl .tooltip {
+    direction: rtl;
+}

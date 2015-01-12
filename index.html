@@ -32,17 +32,17 @@
     <link rel="stylesheet" href="app/features/main-stream/main-stream.css"/>
     <link rel="stylesheet" href="app/features/translation/word-translations/create/create-word-translation.css"/>
     <!-- endbuild -->
+
 </head>
-<body ng-controller="RootController">
+<body ng-controller="RootController" ng-class="{rtl: primaryLanguage.code == 'ar-sa'}">
 
 <!-- needed for facebook sdk -->
 <div id="fb-root"></div>
-
 <navbar></navbar>
 
 <div ng-view></div>
 
-<a href="https://chrome.google.com/webstore/detail/linguas/ddfofeaioekkopafoamkdfokbkloiimc" ng-show="isThisChrome" class="install-chrome-app-message has-transition hidden-xs">
+<a href="https://chrome.google.com/webstore/detail/linguas/ddfofeaioekkopafoamkdfokbkloiimc" ng-show="isThisChrome" class="install-chrome-app-message dir-rtl has-transition hidden-xs">
     {{dictionary.install_chrome_app}}
 </a>
 
